@@ -9,7 +9,7 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 #gem "jekyll", "~> 3.6.0"
-
+gem "jekyll"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 # gem "minima", "~> 2.0"
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
@@ -18,7 +18,10 @@ source "https://rubygems.org"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-#  gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-feed"
+  gem "jekyll-sitemap"
+  gem "jekyll-gist"
+  gem "jekyll-paginate"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -27,6 +30,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # NEXT theme
-gem 'github-pages', group: :jekyll_plugins
+#gem 'github-pages', group: :jekyll_plugins
 #gem 'jekyll-admin', group: :jekyll_plugins
-
