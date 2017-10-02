@@ -12,7 +12,7 @@ This is the code of my personal blog using Jekyll and Leonids Jekyll Themes. Thi
 
 `cd suilib.github.io`
 
-`Modify _config.yml according to your info 
+`Modify _config.yml according to your info` 
 
 `jekyll server`
 
