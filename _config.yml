@@ -4,10 +4,10 @@
 ####################################
 #
 title: Libo Su's Blog 
-email: sulibozju @gmail.com
+email: sulibozju@gmail.com
 description: Welcome to my blog.
 url: "https://sulibo.github.io" # the base hostname & protocol for your site
-keywords: ["Time Delay System"]
+keywords: ["Time Delay System","Control Theory"]
 
 #
 ###################################
@@ -42,7 +42,7 @@ owner:
   twitter: sulibozju #username
   facebook: #username
   google:
-    plus: 116672468031938485533 #username
+    plus: #116672468031938485533 #username
     analytics: UA-42887873-1
     verify:
     ad-client:
