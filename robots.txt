@@ -1,1 +1,1 @@
-Sitemap: http://sulibo.github.io/sitemap.xml
+Sitemap: https://sulibo.github.io/sitemap.xml
