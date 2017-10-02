@@ -7,6 +7,7 @@ GEM
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    ffi (1.9.18-x64-mingw32)
     forwardable-extended (2.6.0)
     jekyll (3.6.0)
       addressable (~> 2.4)
@@ -55,9 +56,16 @@ GEM
     sawyer (0.8.1)
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.3)
+      thread_safe (~> 0.1)
+    tzinfo-data (1.2017.2)
+      tzinfo (>= 1.0.0)
+    wdm (0.1.1)
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   jekyll
@@ -66,6 +74,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-sitemap
   tzinfo-data
+  wdm (>= 0.1.0)
 
 BUNDLED WITH
    1.15.4

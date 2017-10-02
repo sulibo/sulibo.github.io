@@ -32,3 +32,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # NEXT theme
 #gem 'github-pages', group: :jekyll_plugins
 #gem 'jekyll-admin', group: :jekyll_plugins
+
+# Windows 
+gem 'wdm', '>= 0.1.0'
