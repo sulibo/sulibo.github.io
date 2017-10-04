@@ -5,11 +5,15 @@
     is to analyze the robustness and parametric dependence of clusters when delay-coupled networks are paritially synchronized. I obtained my master degree from <a href="http://www.tue.nl">Eindhoven University of Technology</a>, the Netherlands. Before that, I received my bachelor degree from <a href="http://www.zju.edu.cn"> Zhejiang Universtiy</a>, China.
 </div>
 
-# What's New 
+# What's New
+We will oragnize the first UCoCoS training course on Lyapunov methods for time-delay systems at KU Leuven on March 12-14, 2018. 
+* 06/17 - Paper accepted and presented on [ENOC 2017](http://congressline.hu/enoc2017/)  
 
 # Publication 
+{% bibliography %}
 
 # Codes
+* A MATLAB function for the computation of partial synchronization manifolds for delay-coupled systems (version 2), can be obtained from [here](http://twr.cs.kuleuven.be/research/software/delay-control/manifolds/). 
 
 # Contact 
 Libo Su 

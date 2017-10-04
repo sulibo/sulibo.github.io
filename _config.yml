@@ -27,6 +27,16 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
+# Plugins  
+plugins: ['jekyll/scholar']
+
+# Jekyll Scholar 
+scholar: 
+  style: apa
+  source: ./_data/bibliography
+  bibliography: references.bib
+  bibliography_list_tag: ul 
+
 #
 ###################################
 # Site Owner configuration
