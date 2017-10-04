@@ -2,11 +2,12 @@
 layout: post
 title: "Post with Large Feature Image and Text"
 excerpt: "Custom written post descriptions are the way to go... if you're not lazy."
-tags: [sample post, readability, test]
-author: mike
+categories: [paragraph, feature photo]
 comments: true
 image:
-  feature: sample-image-1.jpg
+  feature: https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&dpr=2&fit=crop&fm=jpg&h=475&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1250
+  credit: Greg Rakozy
+  creditlink: https://unsplash.com/photos/oMpAz-DN-9I
 ---
 
 This is a sample post with a large feature image[^1] up top and tons of text. Odio ad blue bottle vinyl, 90's narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney's. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.

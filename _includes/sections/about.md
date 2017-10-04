@@ -9,7 +9,7 @@
 We will oragnize the first UCoCoS training course on Lyapunov methods for time-delay systems at KU Leuven on March 12-14, 2018. 
 * 06/17 - Paper accepted and presented on [ENOC 2017](http://congressline.hu/enoc2017/)  
 
-# Publication 
+# Publications
 {% bibliography %}
 
 # Codes
