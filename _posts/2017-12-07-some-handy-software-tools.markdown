@@ -5,7 +5,7 @@ date: 2017-12-07T16:20:36+01:00
 ---
 Here are some software tools I used which are handy for my daily use of laptops.
 
-# Vim 
+##### Vim 
 
 * Plug Managements: [vim-plug](https://github.com/junegunn/vim-plug)
 
@@ -24,21 +24,11 @@ Here are some software tools I used which are handy for my daily use of laptops.
 	* [VOoM](https://github.com/vim-voom/VOoM)
 	* [vim-livedown](https://github.com/shime/vim-livedown)
 
-# \Latex
- $$ 5 + 5 $$
- $$
-\begin{align*}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{align*}
-$$
+##### LaTeX
+
+* LaTeX tutorial: [LaTeX notes (Chinese)](http://dralpha.altervista.org/zh/tech/lnotes2.pdf)
+* Tikz Examples: [TeXample.net](http://www.texample.net)
+
+##### MATLAB 
+
+* [matlab2tikz](https://github.com/matlab2tikz/matlab2tikz)
