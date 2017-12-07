@@ -5,9 +5,59 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Dec 2017 15:51:28 +0100</pubDate>
-    <lastBuildDate>Thu, 07 Dec 2017 15:51:28 +0100</lastBuildDate>
+    <pubDate>Fri, 08 Dec 2017 00:39:51 +0100</pubDate>
+    <lastBuildDate>Fri, 08 Dec 2017 00:39:51 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Some Handy Software Tools</title>
+        <description>&lt;p&gt;Here are some software tools I used which are handy for my daily use of laptops.&lt;/p&gt;
+
+&lt;h5 id=&quot;vim&quot;&gt;Vim&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Plug Managements: &lt;a href=&quot;https://github.com/junegunn/vim-plug&quot;&gt;vim-plug&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Plugins:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vim-latex/vim-latex&quot;&gt;Vim-Latex&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/lifepillar/vim-mucomplete&quot;&gt;Vim-mucomplete&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/scrooloose/nerdtree&quot;&gt;Nerdtree&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/kristijanhusak/vim-hybrid-material&quot;&gt;Vim-hybrid-material&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vim-airline/vim-airline&quot;&gt;vim-airline&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vim-airline/vim-airline-themes&quot;&gt;vim-airline-themes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/tpope/vim-fugitive&quot;&gt;vim-fugitive&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vimwiki/vimwiki&quot;&gt;vimwiki&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/itchyny/calendar.vim&quot;&gt;calendar.vim&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/ctrlpvim/ctrlp.vim&quot;&gt;ctrlp.vim&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/lazywei/vim-matlab&quot;&gt;vim-matlab&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vim-voom/VOoM&quot;&gt;VOoM&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/shime/vim-livedown&quot;&gt;vim-livedown&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;latex&quot;&gt;LaTeX&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;LaTeX tutorial: &lt;a href=&quot;http://dralpha.altervista.org/zh/tech/lnotes2.pdf&quot;&gt;LaTeX notes (Chinese)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tikz Examples: &lt;a href=&quot;http://www.texample.net&quot;&gt;TeXample.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;matlab&quot;&gt;MATLAB&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/matlab2tikz/matlab2tikz&quot;&gt;matlab2tikz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 07 Dec 2017 16:20:36 +0100</pubDate>
+        <link>https://sulibo.github.io/articles/2017-12/some-handy-software-tools</link>
+        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-12/some-handy-software-tools</guid>
+        
+        
+      </item>
     
   </channel>
 </rss>
