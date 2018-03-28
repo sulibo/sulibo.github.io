@@ -8,11 +8,11 @@ This is the code of my personal blog using Jekyll and Leonids Jekyll Themes. Thi
 
 ## Quick setup
 
-`git clone https://github.com/sulibo/sulibo.github.io`
+`git clone -b source --signle-branch https://github.com/sulibo/sulibo.github.io`
 
 `cd suilib.github.io`
 
-`Modify _config.yml according to your info` 
+`vim  _config.yml` modify the file  according to your info 
 
 `jekyll server`
 
