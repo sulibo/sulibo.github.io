@@ -8,7 +8,7 @@ This is the code of my personal blog using Jekyll and Leonids Jekyll Themes. Thi
 
 ## Quick setup
 
-`git clone -b source --signle-branch https://github.com/sulibo/sulibo.github.io`
+`git clone -b source --single-branch https://github.com/sulibo/sulibo.github.io`
 
 `cd suilib.github.io`
 
