@@ -3,10 +3,10 @@
   <channel>
     <title>Libo Su's Blog</title>
     <description>Welcome to my blog.</description>
-    <link>https://sulibo.github.io/</link>
-    <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Jun 2019 22:12:17 +0200</pubDate>
-    <lastBuildDate>Tue, 11 Jun 2019 22:12:17 +0200</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 11 Jun 2019 22:22:34 +0200</pubDate>
+    <lastBuildDate>Tue, 11 Jun 2019 22:22:34 +0200</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -53,8 +53,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 07 Dec 2017 16:20:36 +0100</pubDate>
-        <link>https://sulibo.github.io/articles/2017-12/some-handy-software-tools</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-12/some-handy-software-tools</guid>
+        <link>http://localhost:4000/articles/2017-12/some-handy-software-tools</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2017-12/some-handy-software-tools</guid>
         
         
       </item>
