@@ -4,7 +4,7 @@ title: "Some Handy Software Tools"
 date: 2017-12-07T16:20:36+01:00
 ---
 Here are some software tools I used which are handy for my daily use of laptops.
-
+<!--more-->
 ##### Vim 
 
 * Plug Managements: [vim-plug](https://github.com/junegunn/vim-plug)

@@ -40,10 +40,20 @@ layout: default
     <div class="post-description">
       <p>
         {{ post.excerpt }}
+        <a href="{{ post.url }}" style="float: left;">Read More<span>&#8594;</span></a><br><br> 
+        <!-- <a class="btn" href= "{{ post.url }}/" style="float: left;">
+            Read More
+        </a>
+        -->
       </p>
     </div>
     {% endif %}
 
+<!--Truncate post content by 3oo words as post excerpt
+    <div class="post-description">
+        {{ post.content | strip_html | truncate:300 }} 
+    </div>
+-->
     {% if post.image.feature %}
     <div class="post-image-feature">
       <img src=
