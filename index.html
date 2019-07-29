@@ -171,49 +171,39 @@
       <p>
         <p>Here are some software tools I used which are handy for my daily use of laptops.</p>
 
-<h5 id="vim">Vim</h5>
 
-<ul>
-  <li>
-    <p>Plug Managements: <a href="https://github.com/junegunn/vim-plug">vim-plug</a></p>
-  </li>
-  <li>
-    <p>Plugins:</p>
-    <ul>
-      <li><a href="https://github.com/vim-latex/vim-latex">Vim-Latex</a></li>
-      <li><a href="https://github.com/lifepillar/vim-mucomplete">Vim-mucomplete</a></li>
-      <li><a href="https://github.com/scrooloose/nerdtree">Nerdtree</a></li>
-      <li><a href="https://github.com/kristijanhusak/vim-hybrid-material">Vim-hybrid-material</a></li>
-      <li><a href="https://github.com/vim-airline/vim-airline">vim-airline</a></li>
-      <li><a href="https://github.com/vim-airline/vim-airline-themes">vim-airline-themes</a></li>
-      <li><a href="https://github.com/tpope/vim-fugitive">vim-fugitive</a></li>
-      <li><a href="https://github.com/vimwiki/vimwiki">vimwiki</a></li>
-      <li><a href="https://github.com/itchyny/calendar.vim">calendar.vim</a></li>
-      <li><a href="https://github.com/ctrlpvim/ctrlp.vim">ctrlp.vim</a></li>
-      <li><a href="https://github.com/lazywei/vim-matlab">vim-matlab</a></li>
-      <li><a href="https://github.com/vim-voom/VOoM">VOoM</a></li>
-      <li><a href="https://github.com/shime/vim-livedown">vim-livedown</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="latex">LaTeX</h5>
-
-<ul>
-  <li>LaTeX tutorial: <a href="http://dralpha.altervista.org/zh/tech/lnotes2.pdf">LaTeX notes (Chinese)</a></li>
-  <li>Tikz Examples: <a href="http://www.texample.net">TeXample.net</a></li>
-</ul>
-
-<h5 id="matlab">MATLAB</h5>
-
-<ul>
-  <li><a href="https://github.com/matlab2tikz/matlab2tikz">matlab2tikz</a></li>
-</ul>
-
+        <a href="/articles/2017-12/some-handy-software-tools" style="float: left;">Read More<span>&#8594;</span></a><br><br> 
+        <!-- <a class="btn" href= "/articles/2017-12/some-handy-software-tools/" style="float: left;">
+            Read More
+        </a>
+        -->
       </p>
     </div>
     
 
+<!--Truncate post content by 3oo words as post excerpt
+    <div class="post-description">
+        Here are some software tools I used which are handy for my daily use of laptops.
+
+Vim
+
+
+  
+    Plug Managements: vim-plug
+  
+  
+    Plugins:
+    
+      Vim-Latex
+      Vim-mucomplete
+      Nerdtree
+      Vim-hybrid-material
+      vim-airline
+      vim-airline-themes
+      vim-fugitive
+      vimwi... 
+    </div>
+-->
     
 
 </section>
@@ -244,228 +234,24 @@
     
     <div class="post-description">
       <p>
-        <p>Octopress is a blog toolkit built on top of Jekyll. Using Ocotopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Ocotpress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
+        <p>Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
 to use Octopress from different places.</p>
 
-<h1 id="installing-octopress">Installing Octopress</h1>
-<h2 id="preparation">Preparation</h2>
-<p>Two packages are required before installing Octopress: Ruby and Git.</p>
 
-<p>In Arch Linux, you can install these two software by the following commands in your terminal.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> ruby 
-<span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> git
-</code></pre></div></div>
-<p>For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, using the following commands</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>ruby 
-<span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>git 
-</code></pre></div></div>
-
-<h2 id="install-octopress">Install Octopress</h2>
-<p>With Ruby and Git installed, you can easily install Octopress.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>octopress
-</code></pre></div></div>
-<p>Or you can use <a href="https://bundler.io">Bundler</a>. Bundler can be installed by Gem.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>bundler
-
-</code></pre></div></div>
-<p>Create a fine named ‘Gemfile’ in your site’s root directory with the following content:</p>
-<pre><code class="language-Gemfile">source 'https://rubygems.org'
-gem 'octopress', '~&gt;3.0'
-</code></pre>
-<p>And then run</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle
-</code></pre></div></div>
-<h1 id="setup">Setup</h1>
-<p>With the new Octopress CLI commands, seting up your blog site is easy.</p>
-
-<p>First, navigate to your working directory and run the following command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress new your_blog_site_name
-</code></pre></div></div>
-<p>Octopress will generate a directory named <strong>your_blog_site_name</strong> with scaffolding for the website.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>your_blog_site_name
-.
-│___ _config.yml
-|___ .gitignore
-|___ .sass-cache
-|___ about.md
-|___ Gemfile
-|___ Gemfile.lock
-|___ index.md
-|___ _posts
-|    |___ 2017-10-07-welcome-to-jekyll.makrdown 
-|___ _templates
-     |___ draft 
-     |___ page 
-     |___ post
-</code></pre></div></div>
-<p>First, you will need to configure the setting for the websit. The configuration file is <strong>_config.yml</strong> located in the root directory of the site. Below is an example of such file. In this file, you can add the informaiton of your site (title, url, social accouts, etc.). Edit the file as you desire.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via Libo Su's Blog, sulibozju@gmail.com, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via .
-title: Your awesome title
-email: your-email@example.com
-description: &gt;- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
-
-# Build settings
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-</code></pre></div></div>
-<h1 id="basic-usage">Basic Usage</h1>
-<h2 id="create-a-post">Create a Post</h2>
-<p>Octopress provides the following Octopress CLI command to create a post</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress new post Hello World 
-</code></pre></div></div>
-<p>This command create a new blog post with the tile of <code class="highlighter-rouge">Hello World</code>. You can change the title to any title you like. The newly created post can be found in the <strong>_post</strong> directory, which looks like below:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-layout: post 
-title: "Hello World"
----
-</code></pre></div></div>
-<p>The post file is a markdown file by default. You can add you content below the second <code class="highlighter-rouge">---</code>. The lines between the two triple-hypen <code class="highlighter-rouge">---</code> is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in <a href="https://jekyllrb.com/docs/frontmatter/">Jeyll Documentation</a>.</p>
-
-<h2 id="build-and-preview-the-site">Build and Preview the site</h2>
-<p>Octopress use Jekyll commands for building and preview the site. We can use the following command to build:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
-</code></pre></div></div>
-<p>This command will build a static HTML website in the <strong>_site</strong> directory.</p>
-
-<p>To view the site built, use the command below</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll serve 
-</code></pre></div></div>
-<p>Use you favorite browser to view it at the address <code class="highlighter-rouge">localhost: 4000</code>.</p>
-
-<h1 id="deploy">Deploy</h1>
-<p>Ocotopress includes a deploy module, called <a href="https://github.com/octopress/deploy">octopress deploy</a> that allows your site to be deployed with Rsync to S3 or GitHub papges. I deploy my site on GitHub page.</p>
-
-<p>First, create a repository named <strong>username.github.io</strong> on your Github. Your blog can be accessed via “https://username.github.io” after deployment. The “username” should be your own username.</p>
-
-<p>Then, setup the deployment configuration by <code class="highlighter-rouge">octopress deploy</code>.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io
-</code></pre></div></div>
-<p>Remember to replace “username” with your own username.</p>
-
-<p>Update the <strong>_config.yml</strong> if necessary (for example, add your blog URL). The line start with “url” in <strong>_config.yml</strong> should be</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url: "https://username.github.io" # the base hostname &amp; protocal for your site , e.g. http://exampel.com 
-</code></pre></div></div>
-
-<p>Build your site with</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
-</code></pre></div></div>
-<p>Deploy your site to GitHub page.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy 
-</code></pre></div></div>
-<p>After this, you can view your site at https://username.github.io.</p>
-
-<p>With <code class="highlighter-rouge">octopress deploy</code>, a master branch is created in the directory <strong>.deploy</strong> and pushed to your GitHub page repository.</p>
-
-<p>To manage the source code, we can create a <code class="highlighter-rouge">source</code> branch and push it to your GitHub page repository.</p>
-
-<p>First add the following two lines in your <code class="highlighter-rouge">.gitignore</code> file.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.deploy 
-_deploy.yml
-</code></pre></div></div>
-
-<p>Set your site’s root directory as a Git repository. In your site’s root directory, run</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
-</code></pre></div></div>
-<p>Add the remote</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote add git@github.com:username/username.github.io
-</code></pre></div></div>
-<p>Create the <code class="highlighter-rouge">source</code> branch</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> <span class="nb">source</span> 
-</code></pre></div></div>
-<p>Push the source code to Github</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nb">.</span> 
-<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Initialization"</span> 
-<span class="nv">$ </span>git push origin <span class="nb">source</span> 
-</code></pre></div></div>
-
-<h1 id="use-in-different-places">Use in different places</h1>
-<p>This section describes how to recreate a local repository of your Octopress blog. This allows you to blog from different places.</p>
-
-<p>Before we start, let us have a look at how Octopress works. 
-If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, <code class="highlighter-rouge">source</code> and <code class="highlighter-rouge">master</code>. The <code class="highlighter-rouge">source</code> branch contains the files to generate the blog and the <code class="highlighter-rouge">master</code> contains the blog itself. In the local repository, the <code class="highlighter-rouge">master</code> branch is stored in the subdirectory named <strong>.deploy</strong>. With ‘.deploy’ in the <strong>.gitignore</strong> file, it is ignored when you run <code class="highlighter-rouge">git push origin source</code>. The <code class="highlighter-rouge">master</code> branch is updated when you run <code class="highlighter-rouge">octopress deploy</code>.</p>
-
-<h2 id="clone-your-blog-to-the-new-location">Clone your blog to the new location</h2>
-<p>In the new location, clone the <code class="highlighter-rouge">source</code> branch to the local Octopress folder</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="nt">-b</span> <span class="nb">source </span>git@github.com:username/username.github.io.git your_blog_site_name
-</code></pre></div></div>
-<p>Then install Octopress using Bundler</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>your_blog_site_name
-<span class="nv">$ </span>bundler 
-</code></pre></div></div>
-<p>Build the site using <code class="highlighter-rouge">jekyll build</code></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
-</code></pre></div></div>
-
-<p>Setup GitHub pages deployment</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io.git
-</code></pre></div></div>
-<p>Pull the <code class="highlighter-rouge">master</code> branch from the GitHub repository via <code class="highlighter-rouge">octopress deploy</code></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy
-</code></pre></div></div>
-<p>Note that in Octopress 3.0, <code class="highlighter-rouge">octopress deploy</code> includes the step of cloning (pulling) the <code class="highlighter-rouge">master</code> branch from the remote to the folder <strong>.deploy</strong> folder.</p>
-
-<h2 id="pushing-changes-from-two-different-machines">Pushing changes from two different machines</h2>
-<p>To blog from more than one computer, you must make sure you push everything before switching between computers. In the first machine, follow the instructions after you have made the changes</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
-<span class="nv">$ </span>octopress deploy <span class="c"># update the blog and the remote master branch </span>
-<span class="nv">$ </span>git add <span class="nb">.</span> 
-<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"some comments"</span> 
-<span class="nv">$ </span>git push origin <span class="nb">source</span> <span class="c"># update the remote source branch</span>
-</code></pre></div></div>
-<p>In the second machine, pull the changes</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git pull origin <span class="nb">source</span> <span class="c">#update the local source branch </span>
-</code></pre></div></div>
-<p>After making the changes, update the blog and update the repository again</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
-<span class="nv">$ </span>octopress deploy <span class="c"># udpate the blog and the remote master branch </span>
-<span class="nv">$ </span>git add <span class="nb">.</span> 
-<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"some comments"</span> 
-<span class="nv">$ </span>git push origin <span class="nb">source</span> 
-</code></pre></div></div>
-
-
+        <a href="/articles/2017-10/octopress-3-tutorial" style="float: left;">Read More<span>&#8594;</span></a><br><br> 
+        <!-- <a class="btn" href= "/articles/2017-10/octopress-3-tutorial/" style="float: left;">
+            Read More
+        </a>
+        -->
       </p>
     </div>
     
 
+<!--Truncate post content by 3oo words as post excerpt
+    <div class="post-description">
+        Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division bet... 
+    </div>
+-->
     
 
 </section>

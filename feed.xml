@@ -5,14 +5,14 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Jul 2019 14:27:34 +0200</pubDate>
-    <lastBuildDate>Mon, 29 Jul 2019 14:27:34 +0200</lastBuildDate>
-    <generator>Jekyll v3.8.6</generator>
+    <pubDate>Mon, 29 Jul 2019 23:41:55 +0200</pubDate>
+    <lastBuildDate>Mon, 29 Jul 2019 23:41:55 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Some Handy Software Tools</title>
-        <description>&lt;p&gt;Here are some software tools I used which are handy for my daily use of laptops.&lt;/p&gt;
-
+        <description>&lt;p&gt;Here are some software tools I used which are handy for my daily use of laptops.
+&lt;!--more--&gt;&lt;/p&gt;
 &lt;h5 id=&quot;vim&quot;&gt;Vim&lt;/h5&gt;
 
 &lt;ul&gt;
@@ -61,10 +61,10 @@
     
       <item>
         <title>Octopress 3 Tutorial</title>
-        <description>&lt;p&gt;Octopress is a blog toolkit built on top of Jekyll. Using Ocotopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Ocotpress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
-to use Octopress from different places.&lt;/p&gt;
-
-&lt;h1 id=&quot;installing-octopress&quot;&gt;Installing Octopress&lt;/h1&gt;
+        <description>&lt;p&gt;Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
+to use Octopress from different places. 
+&lt;!--more--&gt;&lt;/p&gt;
+&lt;h1 id=&quot;install-octopress&quot;&gt;Install Octopress&lt;/h1&gt;
 &lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Two packages are required before installing Octopress: Ruby and Git.&lt;/p&gt;
 
@@ -77,7 +77,7 @@ to use Octopress from different places.&lt;/p&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;install-octopress&quot;&gt;Install Octopress&lt;/h2&gt;
+&lt;h2 id=&quot;install-octopress-1&quot;&gt;Install Octopress&lt;/h2&gt;
 &lt;p&gt;With Ruby and Git installed, you can easily install Octopress.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;octopress
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
