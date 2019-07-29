@@ -10,7 +10,7 @@ This is the code of my personal blog using Jekyll and Leonids Jekyll Themes. Thi
 
 `git clone -b source --single-branch https://github.com/sulibo/sulibo.github.io`
 
-`cd suilib.github.io`
+`cd sulibo.github.io`
 
 `vim  _config.yml` modify the file  according to your info 
 
