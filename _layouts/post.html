@@ -38,7 +38,10 @@ layout: default
     </span>
 
   </header>
-
+<div id="toc" class="toc">
+    <h1>Table of Contents</h1>
+    {% include toc.html html=content %}
+</div>
   <article class="post-content">
     {{ content }}
   </article>
