@@ -256,3 +256,6 @@ $ git push origin source
 
 
 
+<script src="{{ site.url }}/assets/js/back-to-top.js">
+<script>addBackToTop()</script>
+
