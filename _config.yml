@@ -45,33 +45,33 @@ scholar:
 ####################################
 #
 owner:
-  name: Libo Su
-  avatar: avatar.jpg
-  job: "PhD Candidate"
-  bio: "A PhD Candidate at KU Leuven, Belgium and Eindhoven University of Technology, the Netherlands"
-  email: sulibozju@gmail.com
-  disqus-shortname: libosu
-  twitter: sulibozju #username
-  facebook: #username
-  google:
-    plus: #116672468031938485533 #username
-    analytics: UA-42887873-1
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
-  github: sulibo #username
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: sulibo #username
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
+name: Libo Su
+avatar: avatar.jpg
+job: "PhD Candidate"
+bio: "A PhD Candidate at KU Leuven, Belgium and Eindhoven University of Technology, the Netherlands"
+email: sulibozju@gmail.com
+disqus-shortname: libosu
+twitter: sulibozju #username
+facebook: #username
+google:
+plus: #116672468031938485533 #username
+analytics: UA-42887873-1
+verify:
+ad-client:
+ad-slot:
+bing-verify:
+github: sulibo #username
+stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+linkedin: sulibo #username
+xing: #username
+instagram: #username
+lastfm: #username
+tumblr: #username
+pinterest: #username
+foursquare: #username
+steam: #username
+dribbble: #username
+youtube: #username
   soundcloud: #username
   weibo: 1923994851 #username
   flickr: #username

@@ -3,6 +3,7 @@ layout: post
 title: "Octopress 3 Tutorial"
 tags: jekyll blog github-page octopress
 categories: [Tech]
+toc: true
 comments: true
 #excerpt: "Octopress 3 Tutorial"
 date: 2017-10-07T09:50:20+101:00
@@ -256,6 +257,4 @@ $ git push origin source
 
 
 
-<script src="{{ site.url }}/assets/js/back-to-top.js">
-<script>addBackToTop()</script>
 
