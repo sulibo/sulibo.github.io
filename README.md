@@ -4,7 +4,7 @@ This is my personal blog built by using [Octopress 3](https://github.com/octopre
 
 Leonids (by [@renyuanz](https://github.com/renyuanz)) is a clean Jekyll theme perfect for powering your GitHub hosted blog.
 
-Leonids features a simple resume page (by [@Skn0tt](https://github.com/Skn0tt)), with five sections: 
+Leonids features a simple resume page (by [@Skn0tt](https://github.com/Skn0tt)) including five sections: 
 
 * Bio (Edit \_data/index/careers.yml)
 * Education (Edit \_data/index/education.yml)
