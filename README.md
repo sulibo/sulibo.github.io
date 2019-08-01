@@ -12,3 +12,4 @@ Leonids features a simple resume page (by [@Skn0tt](https://github.com/Skn0tt)),
 * Projects (Edit \_data/index/projects.yml)
 * About (Edit \_includes/sections/about.html)
 
+
