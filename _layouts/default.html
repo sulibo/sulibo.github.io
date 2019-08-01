@@ -10,14 +10,26 @@
         {% include sidebar.html %}
       </div>
     </div>
-    <div class="col s12 m9">
+    <div class="col s12 m6 container">
       <div class="post-listing">
         {{ content }}
         {% include footer.html %}
       </div>
     </div>
+    <div class="col s12 m3">
+      <div class="table under-cover">
+        {% include sidebar_right.html %}
+      </div>
+    </div>
   </div>
   {% include js.html %}
-      
+
+  <!--back-to-top-button-->    
+  <script src="{{ site.url }}/{{ site.baseurl }}/assets/js/back-to-top.js"></script>
+  <script>addBackToTop({
+  diameter: 40,
+    backgroundColor: '#42b983',
+      textColor: '#fff'
+  })</script>
 </body>
 </html>

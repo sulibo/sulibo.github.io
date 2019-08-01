@@ -39,19 +39,6 @@ layout: default
 
   </header>
 
-<!--Table of Contents-->
-{% if page.toc %} 
-  {% capture post-toc %}
-    {% include toc.html html=content ordered=true %}
-  {% endcapture %}
-
-  {% if post-toc %}
-    <div style="background-color: #F6F6F6; display: table; padding: 0em 1em 0em 0.5em;">
-    <h4>Table of Contents</h4>
-    {{ post-toc }}
-    </div>
-  {% endif %}
-{% endif %}
 
   <article class="post-content">
     {{ content }}

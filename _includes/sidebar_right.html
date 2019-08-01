@@ -1,0 +1,18 @@
+
+<div class="table-cell table-middle">
+  {% if page.layout == 'post' %}
+    {% if page.toc %} 
+      {% capture post-toc %}
+        {% include toc.html html=page.content ordered=true %}
+      {% endcapture %}
+
+      {% if post-toc %}
+        <div style="background-color:	#F6F6F6F6;text-align: left; display: table; padding: 0em -10em 0em 0.5em;">
+        <h4>Table of Contents</h4>
+        {{ post-toc }}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+</div>
+
