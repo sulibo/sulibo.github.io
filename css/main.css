@@ -1196,10 +1196,9 @@ p {
   /* Place the button 30px from the right */
   z-index: 234;
   /* Make sure it does not overlap */
-  border: none;
-  /* Remove borders */
-  outline: none;
-  /* Remove outline */
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: #42b983;
   background-color: #42b983;
   font-size: 0.875em;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1213,9 +1212,10 @@ p {
   .btn-top:visited {
     color: #fff;
     border-color: #42b983; }
-    .btn-top:visited:hover {
-      background-color: #fff;
-      color: #42b983; }
+  .btn-top:hover {
+    background-color: #fff;
+    color: #42b983;
+    border-color: #42b983; }
 
 /* ==========================================================================
    Syntax highlighting
