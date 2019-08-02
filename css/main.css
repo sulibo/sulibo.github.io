@@ -1210,9 +1210,12 @@ p {
   height: 40px;
   width: 40px;
   border-radius: 50%; }
-  .btn-top:hover {
-    background-color: #fff;
-    color: #42b983; }
+  .btn-top:visited {
+    color: #fff;
+    border-color: #42b983; }
+    .btn-top:visited:hover {
+      background-color: #fff;
+      color: #42b983; }
 
 /* ==========================================================================
    Syntax highlighting
