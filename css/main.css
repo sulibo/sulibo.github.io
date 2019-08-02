@@ -1186,6 +1186,34 @@ p {
     color: #09ABF6;
     border-color: #09ABF6; }
 
+.btn-top {
+  display: none;
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 20px;
+  /* Place the button at the bottom of the page */
+  right: 30px;
+  /* Place the button 30px from the right */
+  z-index: 234;
+  /* Make sure it does not overlap */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  background-color: #42b983;
+  font-size: 0.875em;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  background-color: #42b983;
+  color: #fff;
+  text-decoration: none !important;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%; }
+  .btn-top:hover {
+    background-color: #fff;
+    color: #42b983; }
+
 /* ==========================================================================
    Syntax highlighting
    ========================================================================== */
@@ -1461,6 +1489,24 @@ pre code {
       position: initial;
       width: 100%; } }
 
+.under-cover {
+  background-color: #f5f5f5;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  min-height: 400px;
+  padding: 30px 15px 20px;
+  z-index: -233; }
+  @media only screen and (min-width: 600px) {
+    .under-cover {
+      background-position: center;
+      padding: 30px; } }
+  @media only screen and (min-width: 992px) {
+    .under-cover {
+      height: 100vh;
+      position: initial;
+      width: 100%; } }
+
 .cover-card {
   color: rgba(0, 0, 0, 0.87);
   padding: 0 30px; }
@@ -1606,7 +1652,6 @@ ul.tag-cloud {
   @media only screen and (min-width: 992px) {
     .post-listing {
       height: 100vh;
-      overflow-y: scroll;
       position: initial;
       top: 0; } }
 
@@ -1651,7 +1696,7 @@ section.post {
     color: #42b983; }
 
 a.read-more {
-  padding: 5px 8px; }
+  padding: 5px 0px; }
 
 #post {
   padding-bottom: 50px; }
