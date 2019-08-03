@@ -13,8 +13,9 @@
   }
   @include media-query($medium-screen) {
     height: 100vh;
-    position: initial;
-    width: 100%;
+    position: fixed;
+    left: 0;
+    width: 25%;
   }
 }
 .under-cover {
@@ -31,8 +32,9 @@
   }
   @include media-query($medium-screen) {
     height: 100vh;
-    position: initial;
-    width: 100%;
+    position: fixed;
+    left: 75%;
+    width: 25%;
   }
 }
 .cover-card {

@@ -14,7 +14,9 @@
   @include media-query($medium-screen) {
     height: 100vh;
 //    overflow-y: scroll;
-    position: initial;
+    position: relative;
+    width: 100%;
+    left: 50%; 
     top: 0;
   }
 }
