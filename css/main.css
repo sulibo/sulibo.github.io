@@ -1489,8 +1489,9 @@ pre code {
   @media only screen and (min-width: 992px) {
     .cover {
       height: 100vh;
-      position: initial;
-      width: 100%; } }
+      position: fixed;
+      left: 0;
+      width: 25%; } }
 
 .under-cover {
   background-color: #f5f5f5;
@@ -1507,8 +1508,9 @@ pre code {
   @media only screen and (min-width: 992px) {
     .under-cover {
       height: 100vh;
-      position: initial;
-      width: 100%; } }
+      position: fixed;
+      left: 75%;
+      width: 25%; } }
 
 .cover-card {
   color: rgba(0, 0, 0, 0.87);
@@ -1655,7 +1657,9 @@ ul.tag-cloud {
   @media only screen and (min-width: 992px) {
     .post-listing {
       height: 100vh;
-      position: initial;
+      position: relative;
+      width: 100%;
+      left: 50%;
       top: 0; } }
 
 .image-credit {
