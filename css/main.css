@@ -1186,38 +1186,6 @@ p {
     color: #09ABF6;
     border-color: #09ABF6; }
 
-.btn-top {
-  display: none;
-  position: fixed;
-  /* Fixed/sticky position */
-  bottom: 20px;
-  /* Place the button at the bottom of the page */
-  right: 30px;
-  /* Place the button 30px from the right */
-  z-index: 234;
-  /* Make sure it does not overlap */
-  border-width: 2px !important;
-  border-style: solid !important;
-  border-color: #42b983;
-  background-color: #42b983;
-  font-size: 0.875em;
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  background-color: #42b983;
-  color: #fff;
-  text-decoration: none !important;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  text-align: center; }
-  .btn-top:visited {
-    color: #fff;
-    border-color: #42b983; }
-  .btn-top:hover {
-    background-color: #fff;
-    color: #42b983;
-    border-color: #42b983; }
-
 /* ==========================================================================
    Syntax highlighting
    ========================================================================== */
@@ -1490,29 +1458,8 @@ pre code {
   @media only screen and (min-width: 992px) {
     .cover {
       height: 100vh;
-      position: fixed;
-      left: 0;
-      width: 25%; } }
-
-.under-cover {
-  background-color: #f5f5f5;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  min-height: 400px;
-  padding: 30px 15px 20px;
-  z-index: -233; }
-  @media only screen and (min-width: 600px) {
-    .under-cover {
-      background-position: center;
-      padding: 30px; } }
-  @media only screen and (min-width: 992px) {
-    .under-cover {
-      height: 100vh;
-      position: fixed;
-      left: 75%;
-      width: 25%;
-      z-index: 234; } }
+      position: initial;
+      width: 100%; } }
 
 .cover-card {
   color: rgba(0, 0, 0, 0.87);
@@ -1659,9 +1606,8 @@ ul.tag-cloud {
   @media only screen and (min-width: 992px) {
     .post-listing {
       height: 100vh;
-      position: relative;
-      width: 100%;
-      left: 50%;
+      overflow-y: scroll;
+      position: initial;
       top: 0; } }
 
 .image-credit {
@@ -1705,7 +1651,7 @@ section.post {
     color: #42b983; }
 
 a.read-more {
-  padding: 5px 0px; }
+  padding: 5px 8px; }
 
 #post {
   padding-bottom: 50px; }
@@ -1844,16 +1790,6 @@ a.read-more {
     background-color: #fff;
     color: #5f99cf;
     border-color: #5f99cf; }
-
-.toc {
-  background-color: #f5f5f5;
-  text-align: left;
-  display: table;
-  padding: 0em -10em 0em 0.5em; }
-
-.toc-list-highlight {
-  font-weight: 900;
-  text-decoration: underline; }
 
 ol {
   counter-reset: item; }
