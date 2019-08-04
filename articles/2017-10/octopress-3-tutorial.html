@@ -255,7 +255,7 @@ to use Octopress from different places.
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> ruby 
 <span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> git
 </code></pre></div></div>
-<p>For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, using the following commands</p>
+<p>For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, use the following commands.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>ruby 
 <span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>git 
 </code></pre></div></div>
@@ -298,7 +298,7 @@ gem 'octopress', '~&gt;3.0'
      |___ page 
      |___ post
 </code></pre></div></div>
-<p>First, you will need to configure the setting for the websit. The configuration file is <strong>_config.yml</strong> located in the root directory of the site. Below is an example of such file. In this file, you can add the informaiton of your site (title, url, social accouts, etc.). Edit the file as you desire.</p>
+<p>You will need to configure the setting for your website. The configuration file is <strong>_config.yml</strong> located in the root directory of the site. Below is an example of such file. In this file, you can add the information of your site (title, url, social accouts, etc.).</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
@@ -354,7 +354,7 @@ layout: post
 title: "Hello World"
 ---
 </code></pre></div></div>
-<p>The post file is a markdown file by default. You can add you content below the second <code class="highlighter-rouge">---</code>. The lines between the two triple-hypen <code class="highlighter-rouge">---</code> is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in <a href="https://jekyllrb.com/docs/frontmatter/">Jeyll Documentation</a>.</p>
+<p>The post file is a markdown file by default. You can add you content below the second <code class="highlighter-rouge">---</code>. The lines between the two triple-hyphen <code class="highlighter-rouge">---</code> is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in <a href="https://jekyllrb.com/docs/frontmatter/">Jekyll Documentation</a>.</p>
 
 <h2 id="build-and-preview-the-site">Build and Preview the site</h2>
 <p>Octopress use Jekyll commands for building and preview the site. We can use the following command to build:</p>
@@ -363,18 +363,18 @@ title: "Hello World"
 </code></pre></div></div>
 <p>This command will build a static HTML website in the <strong>_site</strong> directory.</p>
 
-<p>To view the site built, use the command below</p>
+<p>To preview the site built, use the command below</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll serve 
 </code></pre></div></div>
 <p>Use you favorite browser to view it at the address <code class="highlighter-rouge">localhost: 4000</code>.</p>
 
 <h1 id="deploy">Deploy</h1>
-<p>Ocotopress includes a deploy module, called <a href="https://github.com/octopress/deploy">octopress deploy</a> that allows your site to be deployed with Rsync to S3 or GitHub papges. I deploy my site on GitHub page.</p>
+<p>Octopress includes a deploy module, called <a href="https://github.com/octopress/deploy">octopress deploy</a> that allows your site to be deployed to Rsync, S3 or GitHub papges. I deploy my site on GitHub page and the required steps are listed below.</p>
 
 <p>First, create a repository named <strong>username.github.io</strong> on your Github. Your blog can be accessed via “https://username.github.io” after deployment. The “username” should be your own username.</p>
 
-<p>Then, setup the deployment configuration by <code class="highlighter-rouge">octopress deploy</code>.</p>
+<p>Then, set up the deployment configuration by <code class="highlighter-rouge">octopress deploy</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io
 </code></pre></div></div>
 <p>Remember to replace “username” with your own username.</p>
@@ -383,7 +383,7 @@ title: "Hello World"
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url: "https://username.github.io" # the base hostname &amp; protocal for your site , e.g. http://exampel.com 
 </code></pre></div></div>
 
-<p>Build your site with</p>
+<p>Build your site.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
 </code></pre></div></div>
 <p>Deploy your site to GitHub page.</p>
@@ -404,13 +404,13 @@ _deploy.yml
 <p>Set your site’s root directory as a Git repository. In your site’s root directory, run</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
 </code></pre></div></div>
-<p>Add the remote</p>
+<p>Add the remote.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote add git@github.com:username/username.github.io
 </code></pre></div></div>
-<p>Create the <code class="highlighter-rouge">source</code> branch</p>
+<p>Create the <code class="highlighter-rouge">source</code> branch.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> <span class="nb">source</span> 
 </code></pre></div></div>
-<p>Push the source code to Github</p>
+<p>Push the source code to GitHub.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nb">.</span> 
 <span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Initialization"</span> 
 <span class="nv">$ </span>git push origin <span class="nb">source</span> 
@@ -423,21 +423,21 @@ _deploy.yml
 If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, <code class="highlighter-rouge">source</code> and <code class="highlighter-rouge">master</code>. The <code class="highlighter-rouge">source</code> branch contains the files to generate the blog and the <code class="highlighter-rouge">master</code> contains the blog itself. In the local repository, the <code class="highlighter-rouge">master</code> branch is stored in the subdirectory named <strong>.deploy</strong>. With ‘.deploy’ in the <strong>.gitignore</strong> file, it is ignored when you run <code class="highlighter-rouge">git push origin source</code>. The <code class="highlighter-rouge">master</code> branch is updated when you run <code class="highlighter-rouge">octopress deploy</code>.</p>
 
 <h2 id="clone-your-blog-to-the-new-location">Clone your blog to the new location</h2>
-<p>In the new location, clone the <code class="highlighter-rouge">source</code> branch to the local Octopress folder</p>
+<p>At the new location, clone the <code class="highlighter-rouge">source</code> branch to the local Octopress folder.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="nt">-b</span> <span class="nb">source </span>git@github.com:username/username.github.io.git your_blog_site_name
 </code></pre></div></div>
-<p>Then install Octopress using Bundler</p>
+<p>Then install Octopress using Bundler.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>your_blog_site_name
-<span class="nv">$ </span>bundler 
+<span class="nv">$ </span>bundle 
 </code></pre></div></div>
-<p>Build the site using <code class="highlighter-rouge">jekyll build</code></p>
+<p>Build the site.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
 </code></pre></div></div>
 
-<p>Setup GitHub pages deployment</p>
+<p>Set up GitHub pages deployment.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io.git
 </code></pre></div></div>
-<p>Pull the <code class="highlighter-rouge">master</code> branch from the GitHub repository via <code class="highlighter-rouge">octopress deploy</code></p>
+<p>Pull the <code class="highlighter-rouge">master</code> branch from the GitHub repository via <code class="highlighter-rouge">octopress deploy</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy
 </code></pre></div></div>
 <p>Note that in Octopress 3.0, <code class="highlighter-rouge">octopress deploy</code> includes the step of cloning (pulling) the <code class="highlighter-rouge">master</code> branch from the remote to the folder <strong>.deploy</strong> folder.</p>
