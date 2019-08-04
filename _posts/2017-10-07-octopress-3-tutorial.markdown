@@ -20,7 +20,7 @@ In Arch Linux, you can install these two software by the following commands in y
 $ sudo pacman -S ruby 
 $ sudo pacman -S git
 ```
-For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, using the following commands
+For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, use the following commands.
 ```bash 
 $ sudo apt-get install ruby 
 $ sudo apt-get install git 
@@ -70,7 +70,7 @@ your_blog_site_name
      |___ page 
      |___ post
 ```
-First, you will need to configure the setting for the websit. The configuration file is **_config.yml** located in the root directory of the site. Below is an example of such file. In this file, you can add the informaiton of your site (title, url, social accouts, etc.). Edit the file as you desire.  
+You will need to configure the setting for your website. The configuration file is **_config.yml** located in the root directory of the site. Below is an example of such file. In this file, you can add the information of your site (title, url, social accouts, etc.). 
 ```
 # Welcome to Jekyll!
 #
@@ -129,7 +129,7 @@ layout: post
 title: "Hello World"
 ---
 ```
-The post file is a markdown file by default. You can add you content below the second `---`. The lines between the two triple-hypen `---` is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in [Jeyll Documentation](https://jekyllrb.com/docs/frontmatter/).   
+The post file is a markdown file by default. You can add you content below the second `---`. The lines between the two triple-hyphen `---` is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in [Jekyll Documentation](https://jekyllrb.com/docs/frontmatter/).   
 
 ## Build and Preview the site 
 Octopress use Jekyll commands for building and preview the site. We can use the following command to build: 
@@ -139,7 +139,7 @@ $ jekyll build
 ```
 This command will build a static HTML website in the **_site** directory. 
 
-To view the site built, use the command below 
+To preview the site built, use the command below 
 
 ```bash 
 $ jekyll serve 
@@ -147,11 +147,11 @@ $ jekyll serve
 Use you favorite browser to view it at the address `localhost: 4000`.
 
 # Deploy 
-Ocotopress includes a deploy module, called [octopress deploy](https://github.com/octopress/deploy) that allows your site to be deployed with Rsync to S3 or GitHub papges. I deploy my site on GitHub page. 
+Octopress includes a deploy module, called [octopress deploy](https://github.com/octopress/deploy) that allows your site to be deployed to Rsync, S3 or GitHub papges. I deploy my site on GitHub page and the required steps are listed below.  
 
 First, create a repository named **username.github.io** on your Github. Your blog can be accessed via "https://username.github.io" after deployment. The "username" should be your own username.  
 
-Then, setup the deployment configuration by `octopress deploy`. 
+Then, set up the deployment configuration by `octopress deploy`. 
 ```bash 
 $ octopress deploy init git git@github.com:username/username.github.io
 ```
@@ -162,7 +162,7 @@ Update the **_config.yml** if necessary (for example, add your blog URL). The li
 url: "https://username.github.io" # the base hostname & protocal for your site , e.g. http://exampel.com 
 ``` 
 
-Build your site with 
+Build your site. 
 ```bash
 $ jekyll build
 ```
@@ -187,15 +187,15 @@ Set your site's root directory as a Git repository. In your site's root director
 ```bash
 $ git init
 ``` 
-Add the remote 
+Add the remote. 
 ```bash
 $ git remote add git@github.com:username/username.github.io
 ```
-Create the `source` branch
+Create the `source` branch.
 ```bash
 $ git checkout -b source 
 ```
-Push the source code to Github
+Push the source code to GitHub.
 ```bash
 $ git add . 
 $ git commit -m "Initialization" 
@@ -209,25 +209,25 @@ Before we start, let us have a look at how Octopress works.
 If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, `source` and `master`. The `source` branch contains the files to generate the blog and the `master` contains the blog itself. In the local repository, the `master` branch is stored in the subdirectory named **.deploy**. With '.deploy' in the **.gitignore** file, it is ignored when you run `git push origin source`. The `master` branch is updated when you run `octopress deploy`. 
 
 ## Clone your blog to the new location 
-In the new location, clone the `source` branch to the local Octopress folder 
+At the new location, clone the `source` branch to the local Octopress folder.
 ```bash
 $ git clone -b source git@github.com:username/username.github.io.git your_blog_site_name
 ```
-Then install Octopress using Bundler 
+Then install Octopress using Bundler. 
 ```bash 
 $ cd your_blog_site_name
-$ bundler 
+$ bundle 
 ```
-Build the site using `jekyll build` 
+Build the site. 
 ```bash 
 $ jekyll build
 ``` 
 
-Setup GitHub pages deployment 
+Set up GitHub pages deployment.
 ```bash
 $ octopress deploy init git git@github.com:username/username.github.io.git
 ```
-Pull the `master` branch from the GitHub repository via `octopress deploy` 
+Pull the `master` branch from the GitHub repository via `octopress deploy`.
 ```bash 
 $ octopress deploy
 ``` 
