@@ -33,8 +33,9 @@
   @include media-query($medium-screen) {
     height: 100vh;
     position: fixed;
-    left: 75%;
-    width: 25%;
+    left: 75%;    // depend the value of other columns
+    width: 25%;   // depend the value of other columns
+    z-index: 234; // avoid overlap for toc href 
   }
 }
 .cover-card {
