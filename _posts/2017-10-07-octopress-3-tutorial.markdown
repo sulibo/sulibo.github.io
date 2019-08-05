@@ -8,7 +8,7 @@ comments: true
 #excerpt: "Octopress 3 Tutorial"
 date: 2017-10-07T09:50:20+101:00
 ---
-Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been release on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
+Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been released on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
 to use Octopress from different places. 
 <!--more-->
 # Install  
