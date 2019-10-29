@@ -5,9 +5,9 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Oct 2019 00:33:47 +0200</pubDate>
-    <lastBuildDate>Tue, 15 Oct 2019 00:33:47 +0200</lastBuildDate>
-    <generator>Jekyll v4.0.0</generator>
+    <pubDate>Tue, 29 Oct 2019 21:49:04 +0100</pubDate>
+    <lastBuildDate>Tue, 29 Oct 2019 21:49:04 +0100</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Some Handy Software Tools</title>
