@@ -38,4 +38,13 @@ abstract = "Networks of interconnected dynamical systems may exhibit a so-called
 },
 }
 
+@InCollection{Su2018,
+  author    = {L. Su and W. Michiels and E. Steur and H. Nijmeijer},
+  title     = {A method for computation and analysis of partial synchronization manifolds of delay coupled systems},
+  booktitle = {Advances in Delays and Dynamics},
+  publisher = {Springer Verlag, accepted. Preprint available},
+  year      = {2018},
+  url       = {http://twr.cs.kuleuven.be/research/software/delay-control/chapter_manifolds.pdf},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
