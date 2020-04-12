@@ -4,3 +4,4 @@ _site
 _deploy.yml
 .jekyll-cache
 Gemfile.lock
+.DS_store
