@@ -14,6 +14,7 @@ We will oragnize the first UCoCoS training course on Lyapunov methods for time-d
 * 03/18 - The [1st UCoCoS training course "Lyapunov methods for time-delay systems"](https://wms.cs.kuleuven.be/ucocos/events/copy_of_ucocos-training-course-201clyapunov-methods-for-time-delay-systems201d-12-14-march-2018) in Leuven, Belgium
 * 06/17 - Paper accepted and presented on [ENOC 2017](http://congressline.hu/enoc2017/)  
 * 09/17 - The [1st UCoCoS Workshop](https://wms.cs.kuleuven.be/ucocos/events/first-ucocos-workshop-lille-7-8-september-2017-2) in Lille, France. 
+ 
 # Publications
 {% bibliography %}
 

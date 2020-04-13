@@ -34,10 +34,14 @@ plugins: ['jekyll/scholar']
 
 # Jekyll Scholar 
 scholar: 
-  style: apa
+#  style: apa
+  style: ./_data/bibliography/apa_no_url.csl
+  sort_by: year 
+  order: descending 
   source: ./_data/bibliography
   bibliography: references.bib
   bibliography_list_tag: ul 
+  bibliography_template: bibtemplate
 
 #
 ###################################
