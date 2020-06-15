@@ -189,7 +189,7 @@ $ git init
 ``` 
 Add the remote. 
 ```bash
-$ git remote add git@github.com:username/username.github.io
+$ git remote add origin git@github.com:username/username.github.io
 ```
 Create the `source` branch.
 ```bash
