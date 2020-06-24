@@ -28,7 +28,14 @@ Here are some software tools I used which are handy for my daily use of laptops.
 
 * LaTeX tutorial: [LaTeX notes (Chinese)](http://dralpha.altervista.org/zh/tech/lnotes2.pdf)
 * Tikz Examples: [TeXample.net](http://www.texample.net)
+* Editor: [TexStudio](https://www.texstudio.org/)
 
 ##### MATLAB 
 
 * [matlab2tikz](https://github.com/matlab2tikz/matlab2tikz)
+
+##### Reference Managements 
+
+* [Zotero](https://www.zotero.org/)
+* [Mendeley](https://www.zotero.org/)
+* [Jabref](https://www.jabref.org/) 
