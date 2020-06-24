@@ -5,8 +5,8 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Jun 2020 23:31:42 +0200</pubDate>
-    <lastBuildDate>Mon, 15 Jun 2020 23:31:42 +0200</lastBuildDate>
+    <pubDate>Wed, 24 Jun 2020 23:53:16 +0200</pubDate>
+    <lastBuildDate>Wed, 24 Jun 2020 23:53:16 +0200</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -44,12 +44,21 @@
 &lt;ul&gt;
   &lt;li&gt;LaTeX tutorial: &lt;a href=&quot;http://dralpha.altervista.org/zh/tech/lnotes2.pdf&quot;&gt;LaTeX notes (Chinese)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Tikz Examples: &lt;a href=&quot;http://www.texample.net&quot;&gt;TeXample.net&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Editor: &lt;a href=&quot;https://www.texstudio.org/&quot;&gt;TexStudio&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&quot;matlab&quot;&gt;MATLAB&lt;/h5&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/matlab2tikz/matlab2tikz&quot;&gt;matlab2tikz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;reference-managements&quot;&gt;Reference Managements&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.zotero.org/&quot;&gt;Zotero&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.zotero.org/&quot;&gt;Mendeley&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jabref.org/&quot;&gt;Jabref&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 07 Dec 2017 16:20:36 +0100</pubDate>
