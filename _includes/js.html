@@ -21,8 +21,22 @@
   <script src="{{ site.url }}/{{ site.baseurl }}/assets/js/locate-toc-list.js"></script>
 
 <!--LaTeX support-->
-<script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']], // $...$ as math delimiters
+    processEscapes: true,      // use \\$ to produce a literal dollar sign
+    tags: 'ams',               // automatic numbering 
+    useLabelIds: true,         // using label not tag for cross reference  
+    processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
+    processRefs: true          // process \ref{...} outside of math mode
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
 </script>
-
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 
