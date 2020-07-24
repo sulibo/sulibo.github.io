@@ -8,70 +8,72 @@ comments: true
 #excerpt: "Kalman Filter"
 date: 2020-07-20T17:51:18+02:00
 ---
-Kalman filter has numerous applications in technology. A common application is for guidance, navigation and control of vehicles.
+Kalman fiter is one of the most important and widely used estimation algorithms. When taking the [Self-Driving Cars](https://www.coursera.org/specializations/self-driving-cars) courses on [Coursera](https://www.coursera.org), I find the introduction of the Kalman filter in the course is a bit too brief. So I decided to write this post to provide more information on it. 
 <!--more-->
 
+From a control perspective, the Kalman filter is an optimal state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements. 
+
 # State Observer 
-
-A linear time invariant system 
-
-$$
-\begin{equation}
-\begin{aligned}
-\dot{x} &= Ax+Bu \\
-y &= Cx
-\end{aligned}
-\label{equ:system}
-\end{equation}
-$$
-
-where $x\in\mathbb{R}_n$ is the state, $u\in\mathbb{R}_m$ is the input, $y\in\mathbb{R}^p$ is the output. 
-
-Observer 
+Let us start with a brief introduction to state observer. 
+For a dynamical system, it is not always to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design. 
 
 
+Consider a linear time invariant system, represented in the state space form as below 
 
 $$
 \begin{equation}
 \begin{aligned}
-\dot{\hat{x}} & = A\hat{x}+Bu+K(y-\hat{y})\\
-\hat{y}& = C\hat{x}
-\end{aligned}
-\label{equ:observer_model}
-\end{equation}
-$$
-
-
-$$
-\begin{equation}
-e=x-\hat{x}
-\label{equ:error}
-\end{equation}
-$$ 
-
-The error dynamics are 
-
-$$
-\begin{equation}
-\dot{e}=(A-KC)e
-\label{equ:error_dynamics}
-\end{equation}
-$$
-
-The matrix $(A-KC)$ should be Hurwitz such that the error system \eqref{equ:error_dynamics} is stable.
-
-# Discrete time system 
-$$
-\begin{equation}
-\begin{aligned}
-x_k &=x_{k-1}+Bu_k\\
-y_k &=Cx_k
+x_k &=Ax_{k-1}+Bu_k, \\
+y_k &=Cx_k,
 \end{aligned}
 \label{equ:discrete_time_system}
 \end{equation}
 $$
 
-By including the process noise and the measurement noise, the system \eqref{equ:discrete_time_system} is tranformed as 
+where $x_k\in\mathcal{R}^n$, $u_k\in\mathcal{R}^m$, $y_k\in\mathcal{R}^p$ are the state, input and output of the system at time step $k$. 
+
+Given the model ($A,B,C$) and the measurements ($y_k$), a state observer is given by the following equations 
+
+$$
+\begin{equation}
+\begin{aligned}
+\hat{x}_k &= A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k),\\
+\hat{y}_k &= C\hat{x}_k,
+\end{aligned}
+\label{equ:observer}
+\end{equation}
+$$
+
+where $$\hat{x}_{k}$$ is the estimate of the state $x_k$, and $K$ is gain of the observer to be designed. 
+
+The left-hand side of the first equation in \eqref{equ:observer} can be divided into:
+- a prediction part $$A\hat{x}_{k-1}+Bu_{k-1}$$ calculated based on the state estimate and input at the previous step,
+- a correction part $K(y_k-\hat{y}_k)$ calculated based on the difference of the measured and predicted outputs. 
+
+
+The configuration of a state observer is shown in the following figure.
+
+![Observer block diagram\label{fig:observer_block_diagram}](/assets/img/posts/observer_block_diagram.svg "observer block diagram")
+
+The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero. 
+
+It follows from \eqref{equ:discrete_time_system} and \eqref{equ:observer} that 
+
+$$
+\begin{equation}
+e_{k}=(I-KC)e_{k-1}.
+\label{equ:error}
+\end{equation}
+$$
+
+Then the observer gain $K$ should be chosen such that the system \eqref{equ:error} is stable. 
+
+
+
+# Kalman filter
+However, in reality, we will need to consider the noises/uncertainties in the model and the measurement sensors. The Kalman filter is designed to handle this situation. 
+
+Taking into the noises into account, the system \eqref{equ:discrete_time_system} is transformed into:
 
 $$
 \begin{equation}
@@ -83,72 +85,79 @@ y_k &=Cx_k+v_k,
 \end{equation}
 $$
 
-where $w_k\sim \mathcal{N}(0,Q)$ and $v_k\sim \mathcal{N}(0,R)$.
+where $w_k\sim \mathcal{N}(0,Q)$ is the process noise, and $v_k\sim \mathcal{N}(0,R)$ is the measurement noise. These noises are assumed to be independent (of each other), white and noramally distributed. 
 
-The Kalman filter will use both prediction and measurement to esitmate the state. 
-
-$$
-\begin{equation}
-\hat{x}_k&=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-C\hat{y})\\
-\hat{y}&=C\hat{x}_k
-\end{equation}
-$$
-
-That is 
+The Kalman filter is given by 
 
 $$
 \begin{equation}
-\hat{x}_k=A\hat{x}_{k-1}+Bu_{k-1} + K(y_k-C(A\hat{x}_{k-1}+Bu_{k-1}))
-\label{equ:observer_discrete}
-\end{equation}
-$$
-
-Define the priori estimate $\hat{x}^{-}$ as 
-
-$$
-\begin{equation}
-\hat{x}_k=A\hat{x}_{k-1}+Bu_k.
-\label{equ:priori_estimate}
-\end{equation}
-$$
-
-Substitute \eqref{equ:priori_estimate} into \eqref{equ:observer_discrete}, yields
-
-$$
-\hat{x}_k=\hat{x}^-_k + K (y-C\hat{x}^-_k), 
-$$
-which is called the posteriori estimate.
-
-The Kalman filter choose a $K$ known as the Kalman gain to obtain the optimal estimate $\tilde{x}_k$. Roughly speaking, the Kalman gain is chosen based on the ratio of the prediction error and measurement error.   
-
-Define the priori error and posteriori error as 
-
-$$
 \begin{aligned}
-e_k^-&=x_k-\hat{x}_k^-\\
-e_k &=x_k-\hat{x}_k
+\hat{x}_k &=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y})\\
+\hat{y}_k &=C(A\hat{x}_{k-1}+Bu_{k-1})
 \end{aligned}
-$$
-
-$$
-\begin{equation}
-x_k-\hat{x}_k=x_k-\hat{x}_k^- - K(Cx_k+v_k-C\hat{x}_k^-)
+\label{equ:kalman_filter}
 \end{equation}
 $$
 
-i.e. 
+The configuration of the Kalman filter is shown below. 
+
+![Kalman filter block diagram](/assets/img/posts/observer_noise_block_diagram.svg "observer block diagram")
+
+Now let us introduce some concepts in the context of Kalman filter. 
+
+ - Priori estimate: $$\hat{x}_k^-=A\hat{x}_{k-1}+Bu_{k-1}$$.
+ - Posterior estimate: $$\hat{x}_k=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k)=\hat{x}_k^-+K(y_k-C\hat{x}_k^-)$$.
+ - Priori estimate error: $e_k^-=x_k-\hat{x}^-$.
+ - Posterior estimate error: $e_k = x_k -\hat{x}$.
+ - Priori estimate error covariance: $P_k^-=E[e_k^-e_k^{-\top}]$
+ - Posterior estimate error covariance: $P_k=E[e_ke_k^\top]$
+
+The Kalman filter choose a $K$ known as the Kalman filter gain such that the posteriori estimate $\hat{x}_k$ is optimal in sense that the variance of the posteriori estimate error is minimal. In addition, the posteriori estimate $\hat{x}_k$ is an unbiased estimate of $x_k$.  
+
+## Unbiased estimate 
+The expected value of the posteriori estimate is given by 
 
 $$
 \begin{equation}
-e_k=e_k^- - KCe_k^- - Kv_k
+\begin{aligned}
+E[\hat{x}_k]&=E[\hat{x}_k^- +K(y_k-C\hat{x}_k^-)]\\
+            &=E[\hat{x}_k^-]+K(E[Cx_k]+E[v_k]-E[C\hat{x}_k^-])\\
+            &=E[\hat{x}_k^-]+KC(E(x_k)-E[\hat{x}_k^-]).
+\end{aligned}
 \end{equation}
 $$
 
-Take the covariance  
+Setting the initial estimate to be the initial value leads to 
+
+$$
+E[\hat{x}_k^-]=E[x_k], 
+$$ 
+
+which indicates 
+
+$$
+E[\hat{x}_k]=E[x_k].
+$$
+
+So the Kalman filter always provides an unbiased estimate of the states regardless of the Kalman filter gain.
+
+## Minimum variance 
+
+The Kalman filter gain $K$ is chosen such that the variance of the posteriori error $e_k$ is minimal. 
+
+From \eqref{equ:kalman_filter}, we have 
 
 $$
 \begin{equation}
-P_k=E[e_k*e_k^\top]=(I-KC)P_k^- (I-KC)^\top + KRK^\top
+e_k=x_k-\hat{x}_k=x_k-\hat{x}_k^- - K(Cx_k+v_k-C\hat{x}_k^-).
+\end{equation}
+$$
+
+Take the covariance of $e_k$, yields  
+
+$$
+\begin{equation}
+P_k=E[e_ke_k^\top]=(I-KC)P_k^- (I-KC)^\top + KRK^\top.
 \end{equation}
 $$
 
@@ -156,14 +165,70 @@ That is
 
 $$
 \begin{equation}
-P_k=P_k^- -KCP_k^- - P_k^- C^\top K^\top + K(CP_k^-C+R)K^\top 
+P_k=P_k^- -KCP_k^- - P_k^- C^\top K^\top + K(CP_k^-C+R)K^\top.
+\label{equ:Pk_Pk_minus}
 \end{equation}
 $$
+
+Then the Kalman filter design problem become an optimal problem 
 
 $$
 \begin{equation}
-\frac{\partial P_k}{\partial K}=-2(P_k^-C^\top)+2K(CP_k^-C^\top+R)=0
+\min_{K}\mathrm{tr} (P_k)
 \end{equation}
 $$
 
-TBC
+Note that for any matrix $$M$$ and a symmetric matrix $N$, 
+
+$$
+\begin{equation*}
+\frac{\partial \mathrm{tr}(MNM^\top)}{\partial M}=2MN.
+\end{equation*}
+$$
+
+Then differentiating $\mathrm{tr} (P_k)$ with respect to $K$ and settting to zero, yields
+$$
+\begin{equation}
+\frac{\partial \mathrm{tr} (P_k)}{\partial K}=-2(P_k^-C^\top)+2K(CP_k^-C^\top+R)=0.
+\label{equ:trP}
+\end{equation}
+$$
+
+Solving the equation above for $K$, we have 
+
+$$
+\begin{equation}
+K=P_k^-C^\top(CP_k^-C^\top+R)^{-1}.
+\label{equ:kalman_filter_gain}
+\end{equation}
+$$
+
+Substitute \eqref{equ:kalman_filter_gain} into \eqref{equ:Pk_Pk_minus}, yields 
+
+$$
+\begin{equation}
+P_k=(I-KH)P_k^-.
+\end{equation}
+$$
+
+For $P_k^-$, we have 
+
+$$
+\begin{equation}
+\begin{aligned}
+P_k^-&=E[e^-_k e_k^{- \top}]=E[(x_k-x_k^-)(x_k-x_k^-)^\top]\\
+     &=E[(Ae_{k-1}+w_{k-1})(Ae_{k-1}+w_{k-1})^\top]\\
+     &=AP_{k-1}^-A^\top+Q.
+\end{aligned}
+\end{equation}
+$$ 
+
+Now, let us put everything together to form the Kalman filter algorithm. The algorithm consists of two part: 
+
+- Predict 
+    - Project the state ahead 
+    - Project the error covariance ahead 
+- Update 
+    - Compute the Kalman filter gain 
+    - Update estimate with measurement 
+    - Update the error covariance 
