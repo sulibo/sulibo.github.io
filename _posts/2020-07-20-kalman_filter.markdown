@@ -1,20 +1,20 @@
 ---
 layout: post
 title: "Kalman filter"
-tags: research autonomous driving
-categories: [Research]
+tags: [control engineering, autonomous driving]
+categories: [Tech]
 toc: true
 comments: true
 #excerpt: "Kalman Filter"
 date: 2020-07-20T17:51:18+02:00
 ---
-Kalman fiter is one of the most important and widely used estimation algorithms. When taking the [Self-Driving Cars](https://www.coursera.org/specializations/self-driving-cars) courses on [Coursera](https://www.coursera.org), I find the introduction of the Kalman filter in the course is a bit too brief. So I decided to write this post to provide more information on it. 
+Kalman fiter is one of the most important and widely used estimation algorithms. When taking the [Self-Driving Cars](https://www.coursera.org/specializations/self-driving-cars) courses on [Coursera](https://www.coursera.org), I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it. 
 <!--more-->
 
-From a control perspective, the Kalman filter is an optimal state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements. 
+From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements. 
 
 # State Observer 
-Let us start with a brief introduction to state observer. 
+Let us start with a short introduction to state observer. 
 For a dynamical system, it is not always to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design. 
 
 
@@ -101,7 +101,7 @@ $$
 
 The configuration of the Kalman filter is shown below. 
 
-![Kalman filter block diagram](/assets/img/posts/observer_noise_block_diagram.svg "observer block diagram")
+![Kalman filter block diagram](/assets/img/posts/filter_block_diagram.svg "Kalman filter block diagram")
 
 Now let us introduce some concepts in the context of Kalman filter. 
 
@@ -207,7 +207,7 @@ Substitute \eqref{equ:kalman_filter_gain} into \eqref{equ:Pk_Pk_minus}, yields
 
 $$
 \begin{equation}
-P_k=(I-KH)P_k^-.
+P_k=(I-KC)P_k^-.
 \end{equation}
 $$
 
@@ -218,12 +218,13 @@ $$
 \begin{aligned}
 P_k^-&=E[e^-_k e_k^{- \top}]=E[(x_k-x_k^-)(x_k-x_k^-)^\top]\\
      &=E[(Ae_{k-1}+w_{k-1})(Ae_{k-1}+w_{k-1})^\top]\\
-     &=AP_{k-1}^-A^\top+Q.
+     &=AP_{k-1}A^\top+Q.
 \end{aligned}
 \end{equation}
 $$ 
 
-Now, let us put everything together to form the Kalman filter algorithm. The algorithm consists of two part: 
+## Kalman filter process 
+Now, let us put everything together to form the Kalman filter algorithm. The algorithm consists of two parts: 
 
 - Predict 
     - Project the state ahead 
@@ -232,3 +233,5 @@ Now, let us put everything together to form the Kalman filter algorithm. The alg
     - Compute the Kalman filter gain 
     - Update estimate with measurement 
     - Update the error covariance 
+
+![Kalman filter process](/assets/img/posts/kalman_filter_process.svg " Kalman filter process")
