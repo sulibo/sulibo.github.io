@@ -3,11 +3,234 @@
   <channel>
     <title>Libo Su's Blog</title>
     <description>Welcome to my blog.</description>
-    <link>https://sulibo.github.io/</link>
-    <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 20 Jul 2020 16:54:28 +0200</pubDate>
-    <lastBuildDate>Mon, 20 Jul 2020 16:54:28 +0200</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 28 Jul 2020 20:04:05 +0200</pubDate>
+    <lastBuildDate>Tue, 28 Jul 2020 20:04:05 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Kalman filter</title>
+        <description>&lt;p&gt;Kalman fiter is one of the most important and widely used estimation algorithms. When taking the &lt;a href=&quot;https://www.coursera.org/specializations/self-driving-cars&quot;&gt;Self-Driving Cars&lt;/a&gt; courses on &lt;a href=&quot;https://www.coursera.org&quot;&gt;Coursera&lt;/a&gt;, I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it. 
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements.&lt;/p&gt;
+
+&lt;h1 id=&quot;state-observer&quot;&gt;State Observer&lt;/h1&gt;
+&lt;p&gt;Let us start with a short introduction to state observer. 
+For a dynamical system, it is not always to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design.&lt;/p&gt;
+
+&lt;p&gt;Consider a linear time invariant system, represented in the state space form as below&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+x_k &amp;=Ax_{k-1}+Bu_k, \\
+y_k &amp;=Cx_k,
+\end{aligned}
+\label{equ:discrete_time_system}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where $x_k\in\mathcal{R}^n$, $u_k\in\mathcal{R}^m$, $y_k\in\mathcal{R}^p$ are the state, input and output of the system at time step $k$.&lt;/p&gt;
+
+&lt;p&gt;Given the model ($A,B,C$) and the measurements ($y_k$), a state observer is given by the following equations&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+\hat{x}_k &amp;= A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k),\\
+\hat{y}_k &amp;= C\hat{x}_k,
+\end{aligned}
+\label{equ:observer}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;\hat{x}_{k}&lt;/script&gt; is the estimate of the state $x_k$, and $K$ is gain of the observer to be designed.&lt;/p&gt;
+
+&lt;p&gt;The left-hand side of the first equation in \eqref{equ:observer} can be divided into:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a prediction part &lt;script type=&quot;math/tex&quot;&gt;A\hat{x}_{k-1}+Bu_{k-1}&lt;/script&gt; calculated based on the state estimate and input at the previous step,&lt;/li&gt;
+  &lt;li&gt;a correction part $K(y_k-\hat{y}_k)$ calculated based on the difference of the measured and predicted outputs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The configuration of a state observer is shown in the following figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/posts/observer_block_diagram.svg&quot; alt=&quot;Observer block diagram\label{fig:observer_block_diagram}&quot; title=&quot;observer block diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero.&lt;/p&gt;
+
+&lt;p&gt;It follows from \eqref{equ:discrete_time_system} and \eqref{equ:observer} that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+e_{k}=(I-KC)e_{k-1}.
+\label{equ:error}
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;Then the observer gain $K$ should be chosen such that the system \eqref{equ:error} is stable.&lt;/p&gt;
+
+&lt;h1 id=&quot;kalman-filter&quot;&gt;Kalman filter&lt;/h1&gt;
+&lt;p&gt;However, in reality, we will need to consider the noises/uncertainties in the model and the measurement sensors. The Kalman filter is designed to handle this situation.&lt;/p&gt;
+
+&lt;p&gt;Taking into the noises into account, the system \eqref{equ:discrete_time_system} is transformed into:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+x_k &amp;=x_{k-1}+Bu_{k-1}+w_{k-1}\\
+y_k &amp;=Cx_k+v_k,
+\end{aligned}
+\label{equ:discrete_time_system_noise}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where $w_k\sim \mathcal{N}(0,Q)$ is the process noise, and $v_k\sim \mathcal{N}(0,R)$ is the measurement noise. These noises are assumed to be independent (of each other), white and noramally distributed.&lt;/p&gt;
+
+&lt;p&gt;The Kalman filter is given by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+\hat{x}_k &amp;=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y})\\
+\hat{y}_k &amp;=C(A\hat{x}_{k-1}+Bu_{k-1})
+\end{aligned}
+\label{equ:kalman_filter}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The configuration of the Kalman filter is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/posts/filter_block_diagram.svg&quot; alt=&quot;Kalman filter block diagram&quot; title=&quot;Kalman filter block diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let us introduce some concepts in the context of Kalman filter.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Priori estimate: &lt;script type=&quot;math/tex&quot;&gt;\hat{x}_k^-=A\hat{x}_{k-1}+Bu_{k-1}&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;Posterior estimate: &lt;script type=&quot;math/tex&quot;&gt;\hat{x}_k=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k)=\hat{x}_k^-+K(y_k-C\hat{x}_k^-)&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;Priori estimate error: $e_k^-=x_k-\hat{x}^-$.&lt;/li&gt;
+  &lt;li&gt;Posterior estimate error: $e_k = x_k -\hat{x}$.&lt;/li&gt;
+  &lt;li&gt;Priori estimate error covariance: $P_k^-=E[e_k^-e_k^{-\top}]$&lt;/li&gt;
+  &lt;li&gt;Posterior estimate error covariance: $P_k=E[e_ke_k^\top]$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Kalman filter choose a $K$ known as the Kalman filter gain such that the posteriori estimate $\hat{x}_k$ is optimal in sense that the variance of the posteriori estimate error is minimal. In addition, the posteriori estimate $\hat{x}_k$ is an unbiased estimate of $x_k$.&lt;/p&gt;
+
+&lt;h2 id=&quot;unbiased-estimate&quot;&gt;Unbiased estimate&lt;/h2&gt;
+&lt;p&gt;The expected value of the posteriori estimate is given by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+E[\hat{x}_k]&amp;=E[\hat{x}_k^- +K(y_k-C\hat{x}_k^-)]\\
+            &amp;=E[\hat{x}_k^-]+K(E[Cx_k]+E[v_k]-E[C\hat{x}_k^-])\\
+            &amp;=E[\hat{x}_k^-]+KC(E(x_k)-E[\hat{x}_k^-]).
+\end{aligned}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Setting the initial estimate to be the initial value leads to&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E[\hat{x}_k^-]=E[x_k],&lt;/script&gt;
+
+&lt;p&gt;which indicates&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E[\hat{x}_k]=E[x_k].&lt;/script&gt;
+
+&lt;p&gt;So the Kalman filter always provides an unbiased estimate of the states regardless of the Kalman filter gain.&lt;/p&gt;
+
+&lt;h2 id=&quot;minimum-variance&quot;&gt;Minimum variance&lt;/h2&gt;
+
+&lt;p&gt;The Kalman filter gain $K$ is chosen such that the variance of the posteriori error $e_k$ is minimal.&lt;/p&gt;
+
+&lt;p&gt;From \eqref{equ:kalman_filter}, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+e_k=x_k-\hat{x}_k=x_k-\hat{x}_k^- - K(Cx_k+v_k-C\hat{x}_k^-).
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;Take the covariance of $e_k$, yields&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+P_k=E[e_ke_k^\top]=(I-KC)P_k^- (I-KC)^\top + KRK^\top.
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;That is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+P_k=P_k^- -KCP_k^- - P_k^- C^\top K^\top + K(CP_k^-C+R)K^\top.
+\label{equ:Pk_Pk_minus}
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;Then the Kalman filter design problem become an optimal problem&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+\min_{K}\mathrm{tr} (P_k)
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;Note that for any matrix &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; and a symmetric matrix $N$,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation*}
+\frac{\partial \mathrm{tr}(MNM^\top)}{\partial M}=2MN.
+\end{equation*}&lt;/script&gt;
+
+&lt;p&gt;Then differentiating $\mathrm{tr} (P_k)$ with respect to $K$ and settting to zero, yields
+&lt;script type=&quot;math/tex&quot;&gt;\begin{equation}
+\frac{\partial \mathrm{tr} (P_k)}{\partial K}=-2(P_k^-C^\top)+2K(CP_k^-C^\top+R)=0.
+\label{equ:trP}
+\end{equation}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Solving the equation above for $K$, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+K=P_k^-C^\top(CP_k^-C^\top+R)^{-1}.
+\label{equ:kalman_filter_gain}
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;Substitute \eqref{equ:kalman_filter_gain} into \eqref{equ:Pk_Pk_minus}, yields&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+P_k=(I-KC)P_k^-.
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;For $P_k^-$, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\begin{aligned}
+P_k^-&amp;=E[e^-_k e_k^{- \top}]=E[(x_k-x_k^-)(x_k-x_k^-)^\top]\\
+     &amp;=E[(Ae_{k-1}+w_{k-1})(Ae_{k-1}+w_{k-1})^\top]\\
+     &amp;=AP_{k-1}A^\top+Q.
+\end{aligned}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;kalman-filter-process&quot;&gt;Kalman filter process&lt;/h2&gt;
+&lt;p&gt;Now, let us put everything together to form the Kalman filter algorithm. The algorithm consists of two parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Predict
+    &lt;ul&gt;
+      &lt;li&gt;Project the state ahead&lt;/li&gt;
+      &lt;li&gt;Project the error covariance ahead&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Update
+    &lt;ul&gt;
+      &lt;li&gt;Compute the Kalman filter gain&lt;/li&gt;
+      &lt;li&gt;Update estimate with measurement&lt;/li&gt;
+      &lt;li&gt;Update the error covariance&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/posts/kalman_filter_process.svg&quot; alt=&quot;Kalman filter process&quot; title=&quot; Kalman filter process&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jul 2020 17:51:18 +0200</pubDate>
+        <link>http://localhost:4000/articles/2020-07/kalman_filter</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-07/kalman_filter</guid>
+        
+        <category>control engineering</category>
+        
+        <category>autonomous driving</category>
+        
+        
+        <category>Tech</category>
+        
+      </item>
     
       <item>
         <title>Some Handy Software Tools</title>
@@ -62,8 +285,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 07 Dec 2017 16:20:36 +0100</pubDate>
-        <link>https://sulibo.github.io/articles/2017-12/some-handy-software-tools</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-12/some-handy-software-tools</guid>
+        <link>http://localhost:4000/articles/2017-12/some-handy-software-tools</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2017-12/some-handy-software-tools</guid>
         
         
       </item>
@@ -289,8 +512,8 @@ If you follow the deployment steps in the previous section, your Octopress repos
 
 </description>
         <pubDate>Sat, 07 Oct 2017 09:50:20 +0200</pubDate>
-        <link>https://sulibo.github.io/articles/2017-10/octopress-3-tutorial</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-10/octopress-3-tutorial</guid>
+        <link>http://localhost:4000/articles/2017-10/octopress-3-tutorial</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2017-10/octopress-3-tutorial</guid>
         
         <category>jekyll</category>
         
