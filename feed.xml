@@ -5,8 +5,8 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Jul 2020 20:05:40 +0200</pubDate>
-    <lastBuildDate>Tue, 28 Jul 2020 20:05:40 +0200</lastBuildDate>
+    <pubDate>Tue, 08 Sep 2020 17:36:44 +0200</pubDate>
+    <lastBuildDate>Tue, 08 Sep 2020 17:36:44 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -14,11 +14,11 @@
         <description>&lt;p&gt;Kalman fiter is one of the most important and widely used estimation algorithms. When taking the &lt;a href=&quot;https://www.coursera.org/specializations/self-driving-cars&quot;&gt;Self-Driving Cars&lt;/a&gt; courses on &lt;a href=&quot;https://www.coursera.org&quot;&gt;Coursera&lt;/a&gt;, I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it. 
 &lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements.&lt;/p&gt;
+&lt;p&gt;From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/noises in the model and measurements.&lt;/p&gt;
 
 &lt;h1 id=&quot;state-observer&quot;&gt;State Observer&lt;/h1&gt;
 &lt;p&gt;Let us start with a short introduction to state observer. 
-For a dynamical system, it is not always to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design.&lt;/p&gt;
+For a dynamical system, it is not always possible to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design.&lt;/p&gt;
 
 &lt;p&gt;Consider a linear time invariant system, represented in the state space form as below&lt;/p&gt;
 
@@ -56,7 +56,7 @@ y_k &amp;=Cx_k,
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/posts/observer_block_diagram.svg&quot; alt=&quot;Observer block diagram\label{fig:observer_block_diagram}&quot; title=&quot;observer block diagram&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero.&lt;/p&gt;
+&lt;p&gt;The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer gain $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero.&lt;/p&gt;
 
 &lt;p&gt;It follows from \eqref{equ:discrete_time_system} and \eqref{equ:observer} that&lt;/p&gt;
 
@@ -103,8 +103,8 @@ y_k &amp;=Cx_k+v_k,
 &lt;ul&gt;
   &lt;li&gt;Priori estimate: &lt;script type=&quot;math/tex&quot;&gt;\hat{x}_k^-=A\hat{x}_{k-1}+Bu_{k-1}&lt;/script&gt;.&lt;/li&gt;
   &lt;li&gt;Posterior estimate: &lt;script type=&quot;math/tex&quot;&gt;\hat{x}_k=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k)=\hat{x}_k^-+K(y_k-C\hat{x}_k^-)&lt;/script&gt;.&lt;/li&gt;
-  &lt;li&gt;Priori estimate error: $e_k^-=x_k-\hat{x}^-$.&lt;/li&gt;
-  &lt;li&gt;Posterior estimate error: $e_k = x_k -\hat{x}$.&lt;/li&gt;
+  &lt;li&gt;Priori estimate error: $e_k^-=x_k-\hat{x}^-_k$.&lt;/li&gt;
+  &lt;li&gt;Posterior estimate error: $e_k = x_k -\hat{x}_k$.&lt;/li&gt;
   &lt;li&gt;Priori estimate error covariance: $P_k^-=E[e_k^-e_k^{-\top}]$&lt;/li&gt;
   &lt;li&gt;Posterior estimate error covariance: $P_k=E[e_ke_k^\top]$&lt;/li&gt;
 &lt;/ul&gt;
