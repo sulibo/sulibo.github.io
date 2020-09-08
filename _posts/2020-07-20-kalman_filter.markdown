@@ -11,11 +11,11 @@ date: 2020-07-20T17:51:18+02:00
 Kalman fiter is one of the most important and widely used estimation algorithms. When taking the [Self-Driving Cars](https://www.coursera.org/specializations/self-driving-cars) courses on [Coursera](https://www.coursera.org), I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it. 
 <!--more-->
 
-From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/sensors in the model and measurements. 
+From a control perspective, the Kalman filter is similar to a state observer. It uses both prediction and the measurement to provide an optimal estimate of the states amid the uncertainties/noises in the model and measurements. 
 
 # State Observer 
 Let us start with a short introduction to state observer. 
-For a dynamical system, it is not always to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design. 
+For a dynamical system, it is not always possible to obtain information on all state variables in practice. In this case, a state observer is designed to estimate the states of the system and then will be used for control design. 
 
 
 Consider a linear time invariant system, represented in the state space form as below 
@@ -55,7 +55,7 @@ The configuration of a state observer is shown in the following figure.
 
 ![Observer block diagram\label{fig:observer_block_diagram}](/assets/img/posts/observer_block_diagram.svg "observer block diagram")
 
-The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero. 
+The goal of the state observer is to provide an accurate estimate of the state, which is done by choosing a proper observer gain $K$ such that the estimation error $e_k=x_k-\hat{x}_k$ converges to zero. 
 
 It follows from \eqref{equ:discrete_time_system} and \eqref{equ:observer} that 
 
@@ -107,8 +107,8 @@ Now let us introduce some concepts in the context of Kalman filter.
 
  - Priori estimate: $$\hat{x}_k^-=A\hat{x}_{k-1}+Bu_{k-1}$$.
  - Posterior estimate: $$\hat{x}_k=A\hat{x}_{k-1}+Bu_{k-1}+K(y_k-\hat{y}_k)=\hat{x}_k^-+K(y_k-C\hat{x}_k^-)$$.
- - Priori estimate error: $e_k^-=x_k-\hat{x}^-$.
- - Posterior estimate error: $e_k = x_k -\hat{x}$.
+ - Priori estimate error: $e_k^-=x_k-\hat{x}^-_k$.
+ - Posterior estimate error: $e_k = x_k -\hat{x}_k$.
  - Priori estimate error covariance: $P_k^-=E[e_k^-e_k^{-\top}]$
  - Posterior estimate error covariance: $P_k=E[e_ke_k^\top]$
 
