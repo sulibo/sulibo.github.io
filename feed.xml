@@ -5,13 +5,13 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 23 Nov 2020 23:22:34 +0100</pubDate>
-    <lastBuildDate>Mon, 23 Nov 2020 23:22:34 +0100</lastBuildDate>
-    <generator>Jekyll v4.0.1</generator>
+    <pubDate>Tue, 24 Nov 2020 10:49:17 +0100</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2020 10:49:17 +0100</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title>Kaggle Titanic Competition With Deep Neural Network Using Keras</title>
-        <description>&lt;p&gt;This post is a tutorial on solving the Kaggle Titanic Competition using Deep Neural Network with Keras. Kaggle is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model results against a test dataset. 
+        <title>Yet Another Kaggle Titanic Competition Tutorial</title>
+        <description>&lt;p&gt;This post is a tutorial on solving the &lt;a href=&quot;https://www.kaggle.com/c/titanic&quot;&gt;Kaggle Titanic Competition&lt;/a&gt; using Deep Neural Network with the &lt;a href=&quot;https://www.tensorflow.org&quot;&gt;TensorFlow&lt;/a&gt; API &lt;a href=&quot;https://keras.io&quot;&gt;Keras&lt;/a&gt;. &lt;a href=&quot;https://www.kaggle.com&quot;&gt;Kaggle&lt;/a&gt; is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model results against a test dataset. 
 &lt;!--more--&gt;
 The Titanic competition is probably the first competition you will come across on Kaggle. The goal of the competition is to predict the possibility of survival of the passengers onboard, a typical classification problem.&lt;/p&gt;
 
@@ -304,7 +304,7 @@ and test set (test.csv).&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&quot;prepare-the-data&quot;&gt;Prepare the data&lt;/h2&gt;
-&lt;p&gt;This step aims to prepare the data such it is available for the machine learning models chosen later. It includes data cleansing, data editing, data reduction and data wrangling. It involves cleaning up the data, understanding its structure and attributes, studying possible correlations between attributes, and visualizing the data so as to extract human-level insight on its properties, distribution, range, and overall usefulness.&lt;/p&gt;
+&lt;p&gt;This step aims to prepare the data for use in machine learning training. It involves cleaning up the data, understanding its structure and attributes, studying possible correlations between attributes, and visualizing the data to extract human-level insight on its properties, distribution, range, and overall usefulness &lt;a href=&quot;#ref3&quot;&gt;[3]&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;data-overview&quot;&gt;Data Overview&lt;/h3&gt;
 
@@ -313,7 +313,7 @@ and test set (test.csv).&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;test_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;
 RangeIndex: 891 entries, 0 to 890
 Data columns (total 12 columns):
  #   Column       Non-Null Count  Dtype  
@@ -472,7 +472,7 @@ memory usage: 36.0+ KB
 &lt;span class=&quot;n&quot;&gt;train_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Mr          517
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Mr          517
 Miss        182
 Mrs         125
 Master       40
@@ -518,7 +518,7 @@ Name: Title, dtype: int64
 &lt;span class=&quot;n&quot;&gt;train_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Mr         517
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Mr         517
 Miss       184
 Mrs        127
 Master      40
@@ -656,7 +656,7 @@ The Cabin variables have many missing values. THe missing values will be replace
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;full_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Embarked'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;S    914
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;S    914
 C    270
 Q    123
 Name: Embarked, dtype: int64
@@ -876,7 +876,7 @@ Name: Embarked, dtype: int64
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rfr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AgeKnown_X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AgeKnown_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0.4911278076281459
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0.4911278076281459
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Predict age
@@ -888,7 +888,7 @@ Name: Embarked, dtype: int64
 &lt;span class=&quot;n&quot;&gt;full_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# no missing values now (except Survived)
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;
 Int64Index: 1309 entries, 0 to 417
 Data columns (total 19 columns):
  #   Column       Non-Null Count  Dtype  
@@ -1084,7 +1084,7 @@ memory usage: 204.5+ KB
 &lt;span class=&quot;n&quot;&gt;corrDf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort_values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ascending&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pclass        -0.338481
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pclass        -0.338481
 Singleton     -0.203367
 LargeFamily   -0.125147
 Age           -0.065783
@@ -1575,7 +1575,7 @@ Name: Survived, dtype: float64
 
 &lt;p&gt;Output:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Loss = 0.5216637253761292
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Loss = 0.5216637253761292
 Test Accuracy = 0.826815664768219
 Training Accuracy = 0.8300561904907227
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1590,7 +1590,7 @@ Training Accuracy = 0.8300561904907227
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Output:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Loss = 0.49221670627593994
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Loss = 0.49221670627593994
 Accuracy = 0.8316498398780823
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1610,13 +1610,14 @@ Accuracy = 0.8316498398780823
 &lt;span class=&quot;n&quot;&gt;submission&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'titanic-nn.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Submission of this result on Kaggle results in a public score of 0.77751 (rank 4428th out of 16823 t the time of writing).&lt;/p&gt;
+&lt;p&gt;Submission of this result on Kaggle results in a public score of 0.77751,  ranking 4428th out of 16823 at the time of writing.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;p&gt;This tutorial has been created based on great work done solving the Titanic competition.&lt;/p&gt;
+&lt;p&gt;This tutorial has been created based on great work done solving the Titanic competition and machine learning.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/50194676&quot;&gt;https://zhuanlan.zhihu.com/p/50194676&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/startupsci/titanic-data-science-solutions&quot;&gt;https://www.kaggle.com/startupsci/titanic-data-science-solutions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html&quot;&gt;https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html&lt;/a&gt; &lt;a name=&quot;ref3&quot;&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Mon, 23 Nov 2020 21:09:00 +0100</pubDate>
@@ -1954,7 +1955,7 @@ gem 'octopress', '~&amp;gt;3.0'
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;octopress new your_blog_site_name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Octopress will generate a directory named &lt;strong&gt;your_blog_site_name&lt;/strong&gt; with scaffolding for the website.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;your_blog_site_name
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;your_blog_site_name
 .
 │___ _config.yml
 |___ .gitignore
@@ -1971,7 +1972,7 @@ gem 'octopress', '~&amp;gt;3.0'
      |___ post
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;You will need to configure the setting for your website. The configuration file is &lt;strong&gt;_config.yml&lt;/strong&gt; located in the root directory of the site. Below is an example of such file. In this file, you can add the information of your site (title, url, social accouts, etc.).&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Welcome to Jekyll!
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
@@ -2020,13 +2021,13 @@ plugins:
 &lt;p&gt;Octopress provides the following Octopress CLI command to create a post&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;octopress new post Hello World 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This command create a new blog post with the tile of &lt;code class=&quot;highlighter-rouge&quot;&gt;Hello World&lt;/code&gt;. You can change the title to any title you like. The newly created post can be found in the &lt;strong&gt;_post&lt;/strong&gt; directory, which looks like below:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+&lt;p&gt;This command create a new blog post with the tile of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt;. You can change the title to any title you like. The newly created post can be found in the &lt;strong&gt;_post&lt;/strong&gt; directory, which looks like below:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
 layout: post 
 title: &quot;Hello World&quot;
 ---
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The post file is a markdown file by default. You can add you content below the second &lt;code class=&quot;highlighter-rouge&quot;&gt;---&lt;/code&gt;. The lines between the two triple-hyphen &lt;code class=&quot;highlighter-rouge&quot;&gt;---&lt;/code&gt; is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in &lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;Jekyll Documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The post file is a markdown file by default. You can add you content below the second &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;---&lt;/code&gt;. The lines between the two triple-hyphen &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;---&lt;/code&gt; is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in &lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;Jekyll Documentation&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;build-and-preview-the-site&quot;&gt;Build and Preview the site&lt;/h2&gt;
 &lt;p&gt;Octopress use Jekyll commands for building and preview the site. We can use the following command to build:&lt;/p&gt;
@@ -2039,20 +2040,20 @@ title: &quot;Hello World&quot;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll serve 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Use you favorite browser to view it at the address &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost: 4000&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Use you favorite browser to view it at the address &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost: 4000&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h1 id=&quot;deploy&quot;&gt;Deploy&lt;/h1&gt;
 &lt;p&gt;Octopress includes a deploy module, called &lt;a href=&quot;https://github.com/octopress/deploy&quot;&gt;octopress deploy&lt;/a&gt; that allows your site to be deployed to Rsync, S3 or GitHub papges. I deploy my site on GitHub page and the required steps are listed below.&lt;/p&gt;
 
 &lt;p&gt;First, create a repository named &lt;strong&gt;username.github.io&lt;/strong&gt; on your Github. Your blog can be accessed via “https://username.github.io” after deployment. The “username” should be your own username.&lt;/p&gt;
 
-&lt;p&gt;Then, set up the deployment configuration by &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then, set up the deployment configuration by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;octopress deploy init git git@github.com:username/username.github.io
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Remember to replace “username” with your own username.&lt;/p&gt;
 
 &lt;p&gt;Update the &lt;strong&gt;_config.yml&lt;/strong&gt; if necessary (for example, add your blog URL). The line start with “url” in &lt;strong&gt;_config.yml&lt;/strong&gt; should be&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;url: &quot;https://username.github.io&quot; # the base hostname &amp;amp; protocal for your site , e.g. http://exampel.com 
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;url: &quot;https://username.github.io&quot; # the base hostname &amp;amp; protocal for your site , e.g. http://exampel.com 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Build your site.&lt;/p&gt;
@@ -2063,13 +2064,13 @@ title: &quot;Hello World&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;After this, you can view your site at https://username.github.io.&lt;/p&gt;
 
-&lt;p&gt;With &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;, a master branch is created in the directory &lt;strong&gt;.deploy&lt;/strong&gt; and pushed to your GitHub page repository.&lt;/p&gt;
+&lt;p&gt;With &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;, a master branch is created in the directory &lt;strong&gt;.deploy&lt;/strong&gt; and pushed to your GitHub page repository.&lt;/p&gt;
 
-&lt;p&gt;To manage the source code, we can create a &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch and push it to your GitHub page repository.&lt;/p&gt;
+&lt;p&gt;To manage the source code, we can create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; branch and push it to your GitHub page repository.&lt;/p&gt;
 
-&lt;p&gt;First add the following two lines in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;First add the following two lines in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; file.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.deploy 
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.deploy 
 _deploy.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -2079,7 +2080,7 @@ _deploy.yml
 &lt;p&gt;Add the remote.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote add origin git@github.com:username/username.github.io
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Create the &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch.&lt;/p&gt;
+&lt;p&gt;Create the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; branch.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Push the source code to GitHub.&lt;/p&gt;
@@ -2092,10 +2093,10 @@ _deploy.yml
 &lt;p&gt;This section describes how to recreate a local repository of your Octopress blog. This allows you to blog from different places.&lt;/p&gt;
 
 &lt;p&gt;Before we start, let us have a look at how Octopress works. 
-If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch contains the files to generate the blog and the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; contains the blog itself. In the local repository, the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch is stored in the subdirectory named &lt;strong&gt;.deploy&lt;/strong&gt;. With ‘.deploy’ in the &lt;strong&gt;.gitignore&lt;/strong&gt; file, it is ignored when you run &lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin source&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch is updated when you run &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
+If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; branch contains the files to generate the blog and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; contains the blog itself. In the local repository, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch is stored in the subdirectory named &lt;strong&gt;.deploy&lt;/strong&gt;. With ‘.deploy’ in the &lt;strong&gt;.gitignore&lt;/strong&gt; file, it is ignored when you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push origin source&lt;/code&gt;. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch is updated when you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;clone-your-blog-to-the-new-location&quot;&gt;Clone your blog to the new location&lt;/h2&gt;
-&lt;p&gt;At the new location, clone the &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch to the local Octopress folder.&lt;/p&gt;
+&lt;p&gt;At the new location, clone the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; branch to the local Octopress folder.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;git@github.com:username/username.github.io.git your_blog_site_name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then install Octopress using Bundler.&lt;/p&gt;
@@ -2109,10 +2110,10 @@ If you follow the deployment steps in the previous section, your Octopress repos
 &lt;p&gt;Set up GitHub pages deployment.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;octopress deploy init git git@github.com:username/username.github.io.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Pull the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch from the GitHub repository via &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Pull the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch from the GitHub repository via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;octopress deploy
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Note that in Octopress 3.0, &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt; includes the step of cloning (pulling) the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch from the remote to the folder &lt;strong&gt;.deploy&lt;/strong&gt; folder.&lt;/p&gt;
+&lt;p&gt;Note that in Octopress 3.0, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;octopress deploy&lt;/code&gt; includes the step of cloning (pulling) the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch from the remote to the folder &lt;strong&gt;.deploy&lt;/strong&gt; folder.&lt;/p&gt;
 
 &lt;h2 id=&quot;pushing-changes-from-two-different-machines&quot;&gt;Pushing changes from two different machines&lt;/h2&gt;
 &lt;p&gt;To blog from more than one computer, you must make sure you push everything before switching between computers. In the first machine, follow the instructions after you have made the changes&lt;/p&gt;
