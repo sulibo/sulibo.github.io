@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kaggle Titanic Competition With Deep Neural Network Using Keras
+title: Yet Another Kaggle Titanic Competition Tutorial 
 tags:
 - machine learning
 - deep learning
@@ -13,7 +13,7 @@ toc: true
 comments: true
 date: 2020-11-23 21:09 +0100
 ---
-This post is a tutorial on solving the Kaggle Titanic Competition using Deep Neural Network with Keras. Kaggle is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model results against a test dataset. 
+This post is a tutorial on solving the [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic) using Deep Neural Network with the [TensorFlow](https://www.tensorflow.org) API [Keras](https://keras.io). [Kaggle](https://www.kaggle.com) is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model results against a test dataset. 
 <!--more-->
 The Titanic competition is probably the first competition you will come across on Kaggle. The goal of the competition is to predict the possibility of survival of the passengers onboard, a typical classification problem.  
 
@@ -316,7 +316,7 @@ test_data.head()
 
 
 ## Prepare the data
-This step aims to prepare the data such it is available for the machine learning models chosen later. It includes data cleansing, data editing, data reduction and data wrangling. It involves cleaning up the data, understanding its structure and attributes, studying possible correlations between attributes, and visualizing the data so as to extract human-level insight on its properties, distribution, range, and overall usefulness.
+This step aims to prepare the data for use in machine learning training. It involves cleaning up the data, understanding its structure and attributes, studying possible correlations between attributes, and visualizing the data to extract human-level insight on its properties, distribution, range, and overall usefulness [[3]](#ref3).
 
 ### Data Overview 
 
@@ -1793,9 +1793,10 @@ submission = pd.DataFrame({
 submission.to_csv('titanic-nn.csv', index=False)
 ```
 
-Submission of this result on Kaggle results in a public score of 0.77751 (rank 4428th out of 16823 t the time of writing).
+Submission of this result on Kaggle results in a public score of 0.77751,  ranking 4428th out of 16823 at the time of writing.
 
 ## References 
-This tutorial has been created based on great work done solving the Titanic competition.
+This tutorial has been created based on great work done solving the Titanic competition and machine learning.
 1. [https://zhuanlan.zhihu.com/p/50194676](https://zhuanlan.zhihu.com/p/50194676)
 2. [https://www.kaggle.com/startupsci/titanic-data-science-solutions](https://www.kaggle.com/startupsci/titanic-data-science-solutions)
+3. [https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html](https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html) <a name="ref3"></a>
