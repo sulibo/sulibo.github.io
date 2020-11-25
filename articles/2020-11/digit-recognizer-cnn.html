@@ -8,35 +8,35 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Welcome to my blog.">
+  <meta name="description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found here.Define the problemThe goal h...">
   <meta name="keywords" content="Time Delay System and Control Theory">
-  <meta name="author" content="Libo Su&#39;s Blog">
+  <meta name="author" content="A short tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f5f5f5">
 
   <!-- Twitter Tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Libo Su&#39;s Blog">
-  <meta name="twitter:description" content="Welcome to my blog.">
+  <meta name="twitter:title" content="A short tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
+  <meta name="twitter:description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found here.Define the problemThe goal h...">
   
     <meta property="twitter:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
   
 
   <!-- Open Graph Tags -->
   <meta property="og:type" content="blog">
-  <meta property="og:url" content="https://sulibo.github.io/">
-  <meta property="og:title" content="Libo Su&#39;s Blog">
-  <meta property="og:description" content="Welcome to my blog.">
+  <meta property="og:url" content="https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn">
+  <meta property="og:title" content="A short tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
+  <meta property="og:description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found here.Define the problemThe goal h...">
   
     <meta property="og:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
   
-  <title>Libo Su's Blog</title>
+  <title>A short tutorial on Building a Digit Recognizer Using CNN | Libo Su's Blog</title>
 
   <!-- CSS files -->
   <link rel="stylesheet" href="https://sulibo.github.io/assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://sulibo.github.io/assets/css/main.css">
 
-  <link rel="canonical" href="https://sulibo.github.io/">
+  <link rel="canonical" href="https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn">
   <link rel="alternate" type="application/rss+xml" title="Libo Su&#39;s Blog" href="https://sulibo.github.io/feed.xml" />
 
   <!-- Icons -->
@@ -177,6 +177,32 @@
 </div>
 
   
+    
+    
+      <div style="background-color:	#F6F6F6F6;text-align: left; display: table; padding: 0em -10em 0em 0.5em;">
+        <h4>Table of Contents</h4>
+        
+      <ol>
+  <li><a href="#define-the-problem">Define the problem</a></li>
+  <li><a href="#acquire-the-data">Acquire the data</a></li>
+  <li><a href="#prepare-the-data">Prepare the data</a>
+    <ol>
+      <li><a href="#data-overview">Data Overview</a></li>
+      <li><a href="#normalization">Normalization</a></li>
+      <li><a href="#reshape-the-data">Reshape the data</a></li>
+      <li><a href="#split-the-dataset">Split the dataset</a></li>
+    </ol>
+  </li>
+  <li><a href="#define-the-model">Define the model</a></li>
+  <li><a href="#train-the-model">Train the model</a></li>
+  <li><a href="#evulate-the-model">Evulate the model</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+    
+      </div>
+    
+  
   -->
 </div>
 
@@ -185,41 +211,34 @@
     </div>
     <div class="col s12 m6">
       <div class="post-listing">
-        <hr />
-<p>Hi, welcome to my personal blog! This is an online place for me to keep some relatively random stuffs: thoughts about research, reflections on my life and work during my PhD journey, and beyond. I am <a href="https://sulibo.github.io/about">Libo Su</a>, a PhD student at KU Leuven, working on partial synchronization of delay coupled network in the Marie Curie project called <a href="http://ucocos.cs.kuleuven.be">UCoCoS</a>.</p>
-
-<hr />
-
+        <a class="btn" href= "https://sulibo.github.io/" >
+  Home
+</a>
 
 
 
-<section class="post">
+<div id="post">
   <header class="post-header">
-    <p class="post-meta">
+    <h1 title="A short tutorial on Building a Digit Recognizer Using CNN">A short tutorial on Building a Digit Recognizer Using CNN</h1>
+    <span class="post-meta">
       <span class="post-date">
         25 NOV 2020
       </span>
-      
       •
-      
-        <a class="post-cat" href="https://sulibo.github.io/categories/#Tech">Tech</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="post-title" title="A short tutorial on Building a Digit Recognizer Using CNN">A short tutorial on Building a Digit Recognizer Using CNN</a>
-      
-    </h4>
+      <span class="read-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
 
-    
+    </span>
 
-    </header>
+  </header>
 
-    
-    <div class="post-description">
-      <p>
-        <p>This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found <a href="https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Digit_Recognizer_CNN">here</a>.</p>
+
+  <article class="post-content">
+    <p>This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found <a href="https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Digit_Recognizer_CNN">here</a>.</p>
 
 <h2 id="define-the-problem">Define the problem</h2>
 <p>The goal here is to correctly identify digits from a dataset of tens of thousands of handwritten images. The MNIST dataset is used for training and testing.</p>
@@ -429,231 +448,58 @@ Epoch 10/10
   <li><a href="https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6">https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6</a></li>
 </ol>
 
-        <a href="/articles/2020-11/digit-recognizer-cnn" class="read-more">Read More<span>&nbsp &#8594;</span></a> 
-        <!-- <a class="btn" href= "/articles/2020-11/digit-recognizer-cnn/" style="float: left;">
-            Read More
-        </a>
-        -->
-      </p>
-    </div>
-    
+  </article>
+</div>
 
-<!--Truncate post content by 3oo words as post excerpt
-    <div class="post-description">
-        This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found here.
-
-Define the problem
-The goal here is to correctly identify digits from a dataset of tens of thousands of handwritten images. The MNIST dataset is used for training and... 
-    </div>
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+<!-- remove Goolge Plus and Hacker-new share buttons
+    <li>
+      <a href="https://plus.google.com/share?url=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
 -->
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        23 NOV 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://sulibo.github.io/categories/#Tech">Tech</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://sulibo.github.io/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras" class="post-title" title="Yet Another Kaggle Titanic Competition Tutorial">Yet Another Kaggle Titanic Competition Tutorial</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        <p>This post is a tutorial on solving the <a href="https://www.kaggle.com/c/titanic">Kaggle Titanic Competition</a> using Deep Neural Network with the <a href="https://www.tensorflow.org">TensorFlow</a> API <a href="https://keras.io">Keras</a>. <a href="https://www.kaggle.com">Kaggle</a> is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model results against a test dataset.</p>
+    <li>
+      <a href="https://www.reddit.com/submit?url=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
 
 
-        <a href="/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras" class="read-more">Read More<span>&nbsp &#8594;</span></a> 
-        <!-- <a class="btn" href= "/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras/" style="float: left;">
-            Read More
-        </a>
-        -->
-      </p>
-    </div>
-    
-
-<!--Truncate post content by 3oo words as post excerpt
-    <div class="post-description">
-        This post is a tutorial on solving the Kaggle Titanic Competition using Deep Neural Network with the TensorFlow API Keras. Kaggle is a competition site which provides problems to solve or questions to ask while providing the datasets for training your data science model and testing the model resu... 
-    </div>
--->
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        20 JUL 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://sulibo.github.io/categories/#Tech">Tech</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://sulibo.github.io/articles/2020-07/kalman_filter" class="post-title" title="Kalman filter">Kalman filter</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        <p>Kalman fiter is one of the most important and widely used estimation algorithms. When taking the <a href="https://www.coursera.org/specializations/self-driving-cars">Self-Driving Cars</a> courses on <a href="https://www.coursera.org">Coursera</a>, I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it.</p>
+<div>
+  
+    <a style="float: left; font-weight: bold; " href="/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras">&laquo; Yet Another Kaggle Titanic Competition Tutorial</a>
+  
+  
+  <br><br>
+</div>
 
 
-        <a href="/articles/2020-07/kalman_filter" class="read-more">Read More<span>&nbsp &#8594;</span></a> 
-        <!-- <a class="btn" href= "/articles/2020-07/kalman_filter/" style="float: left;">
-            Read More
-        </a>
-        -->
-      </p>
-    </div>
-    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'libosu';
 
-<!--Truncate post content by 3oo words as post excerpt
-    <div class="post-description">
-        Kalman fiter is one of the most important and widely used estimation algorithms. When taking the Self-Driving Cars courses on Coursera, I find the introduction of the Kalman filter in the course a bit brief. So I decided to write this post to provide more information on it. 
-
-
-From a control pers... 
-    </div>
--->
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        7 DEC 2017
-      </span>
-      
-    </p>
-    <h4>
-      <a href="https://sulibo.github.io/articles/2017-12/some-handy-software-tools" class="post-title" title="Some Handy Software Tools">Some Handy Software Tools</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        <p>Here are some software tools I used which are handy for my daily use of laptops.</p>
-
-
-        <a href="/articles/2017-12/some-handy-software-tools" class="read-more">Read More<span>&nbsp &#8594;</span></a> 
-        <!-- <a class="btn" href= "/articles/2017-12/some-handy-software-tools/" style="float: left;">
-            Read More
-        </a>
-        -->
-      </p>
-    </div>
-    
-
-<!--Truncate post content by 3oo words as post excerpt
-    <div class="post-description">
-        Here are some software tools I used which are handy for my daily use of laptops.
-
-Vim
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
   
-    Plug Managements: vim-plug
-  
-  
-    Plugins:
-    
-      Vim-Latex
-      Vim-mucomplete
-      Nerdtree
-      Vim-hybrid-material
-      vim-airline
-      vim-airline-themes
-      vim-fugitive
-      vimwi... 
-    </div>
--->
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        7 OCT 2017
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://sulibo.github.io/categories/#Tech">Tech</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="post-title" title="Octopress 3 Tutorial">Octopress 3 Tutorial</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        <p>Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been released on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
-to use Octopress from different places.</p>
-
-
-        <a href="/articles/2017-10/octopress-3-tutorial" class="read-more">Read More<span>&nbsp &#8594;</span></a> 
-        <!-- <a class="btn" href= "/articles/2017-10/octopress-3-tutorial/" style="float: left;">
-            Read More
-        </a>
-        -->
-      </p>
-    </div>
-    
-
-<!--Truncate post content by 3oo words as post excerpt
-    <div class="post-description">
-        Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been released on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division be... 
-    </div>
--->
-    
-
-</section>
-
 
         <footer>
   &copy; 2020 Libo Su. Powered by <a href="http://octopress.org/">Octopress 3.0</a> and <a href="http://github.com/renyuanz/leonids/">Leonids theme</a>.
@@ -665,6 +511,35 @@ to use Octopress from different places.</p>
       <div class="table under-cover">
         
 <div class="table-cell table-middle">
+  
+     
+      
+
+      
+        <div class="toc">
+        <h4>Table of Contents</h4>
+        
+        <ol id="post-toc">
+  <li><a href="#define-the-problem">Define the problem</a></li>
+  <li><a href="#acquire-the-data">Acquire the data</a></li>
+  <li><a href="#prepare-the-data">Prepare the data</a>
+    <ol>
+      <li><a href="#data-overview">Data Overview</a></li>
+      <li><a href="#normalization">Normalization</a></li>
+      <li><a href="#reshape-the-data">Reshape the data</a></li>
+      <li><a href="#split-the-dataset">Split the dataset</a></li>
+    </ol>
+  </li>
+  <li><a href="#define-the-model">Define the model</a></li>
+  <li><a href="#train-the-model">Train the model</a></li>
+  <li><a href="#evulate-the-model">Evulate the model</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+      
+        </div>
+      
+    
   
 </div>
 
