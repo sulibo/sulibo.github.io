@@ -25,7 +25,7 @@ This tutorial follows a typical workflow of machine learning project.
 5. Train and fine-tune the model
 6. Test and deploy the model
 
-The accompanying notebook of this tutorial is available [here](https://github.com/sulibo/code_snipets/tree/main/Kaggle/Titanic).
+The accompanying notebook of this tutorial is available [here](https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Kaggle/Titanic).
 
 ## Define the problem
 The question or problem definition for Titanic Survival competition is [described here at Kaggle](https://www.kaggle.com/c/titanic).
