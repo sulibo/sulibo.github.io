@@ -5,8 +5,8 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Nov 2020 23:24:46 +0100</pubDate>
-    <lastBuildDate>Wed, 25 Nov 2020 23:24:46 +0100</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2020 23:27:45 +0100</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2020 23:27:45 +0100</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
@@ -258,7 +258,7 @@ The Titanic competition is probably the first competition you will come across o
   &lt;li&gt;Test and deploy the model&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;The accompanying notebook of this tutorial is available &lt;a href=&quot;https://github.com/sulibo/code_snipets/tree/main/Kaggle/Titanic&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The accompanying notebook of this tutorial is available &lt;a href=&quot;https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Kaggle/Titanic&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;define-the-problem&quot;&gt;Define the problem&lt;/h2&gt;
 &lt;p&gt;The question or problem definition for Titanic Survival competition is &lt;a href=&quot;https://www.kaggle.com/c/titanic&quot;&gt;described here at Kaggle&lt;/a&gt;.&lt;/p&gt;
