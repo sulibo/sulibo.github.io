@@ -16,7 +16,7 @@ date: 2020-11-25T23:05:53+01:00
 ---
 
 This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. This accompanying notebook can be found [here](https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Digit_Recognizer_CNN).
-
+<!--more-->
 ## Define the problem 
 The goal here is to correctly identify digits from a dataset of tens of thousands of handwritten images. The MNIST dataset is used for training and testing. 
 
