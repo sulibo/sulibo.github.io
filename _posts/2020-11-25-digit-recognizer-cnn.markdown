@@ -11,7 +11,7 @@ categories:
 - Tech
 toc: true
 comments: true
-title: "A short tutorial on Building a Digit Recognizer Using CNN"
+title: "A Short Tutorial on Building a Digit Recognizer Using CNN"
 date: 2020-11-25T23:05:53+01:00
 ---
 
