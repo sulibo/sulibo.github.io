@@ -5,12 +5,12 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Nov 2020 23:55:44 +0100</pubDate>
-    <lastBuildDate>Wed, 25 Nov 2020 23:55:44 +0100</lastBuildDate>
+    <pubDate>Thu, 26 Nov 2020 15:34:54 +0100</pubDate>
+    <lastBuildDate>Thu, 26 Nov 2020 15:34:54 +0100</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title>A short tutorial on Building a Digit Recognizer Using CNN</title>
+        <title>A Short Tutorial on Building a Digit Recognizer Using CNN</title>
         <description>&lt;p&gt;This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. The accompanying notebook can be found &lt;a href=&quot;https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Digit_Recognizer_CNN&quot;&gt;here&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
 &lt;h2 id=&quot;define-the-problem&quot;&gt;Define the problem&lt;/h2&gt;
