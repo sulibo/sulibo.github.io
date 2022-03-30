@@ -43,3 +43,5 @@ gem 'wdm', '>= 0.1.0'
 
 # kramdown 
 gem "kramdown-parser-gfm"
+
+gem "webrick", "~> 1.7"
