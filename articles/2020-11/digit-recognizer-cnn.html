@@ -301,7 +301,7 @@
 <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">Y_train</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train: X=(60000, 28, 28), y=(60000,)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train: X=(60000, 28, 28), y=(60000,)
 Test: X=(10000, 28, 28), y=(10000,)
 </code></pre></div></div>
 
@@ -358,7 +358,7 @@ In addition, we have simlar counts for the 10 digits.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "sequential"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "sequential"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -389,7 +389,7 @@ _________________________________________________________________
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span><span class="p">),</span> <span class="n">verbose</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/10
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/10
 1688/1688 [==============================] - 28s 17ms/step - loss: 0.1290 - accuracy: 0.9600 - val_loss: 0.0554 - val_accuracy: 0.9815
 Epoch 2/10
 1688/1688 [==============================] - 28s 16ms/step - loss: 0.0440 - accuracy: 0.9863 - val_loss: 0.0485 - val_accuracy: 0.9850
@@ -423,7 +423,7 @@ Epoch 10/10
 </span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>313/313 [==============================] - 2s 5ms/step - loss: 0.0325 - accuracy: 0.9919
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>313/313 [==============================] - 2s 5ms/step - loss: 0.0325 - accuracy: 0.9919
 </code></pre></div></div>
 
 <p>The accuracy on the test dataset is 0.9919.</p>
@@ -502,7 +502,7 @@ Epoch 10/10
   
 
         <footer>
-  &copy; 2020 Libo Su. Powered by <a href="http://octopress.org/">Octopress 3.0</a> and <a href="http://github.com/renyuanz/leonids/">Leonids theme</a>.
+  &copy; 2022 Libo Su. Powered by <a href="http://octopress.org/">Octopress 3.0</a> and <a href="http://github.com/renyuanz/leonids/">Leonids theme</a>.
 </footer>
 
       </div>
