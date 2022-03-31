@@ -3,10 +3,10 @@
   <channel>
     <title>Libo Su&apos;s Blog</title>
     <description>Welcome to my blog.</description>
-    <link>https://sulibo.github.io/</link>
-    <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 Mar 2022 10:04:09 +0200</pubDate>
-    <lastBuildDate>Thu, 31 Mar 2022 10:04:09 +0200</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 31 Mar 2022 10:07:34 +0200</pubDate>
+    <lastBuildDate>Thu, 31 Mar 2022 10:07:34 +0200</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -222,8 +222,8 @@ Epoch 10/10
 &lt;/ol&gt;
 </description>
         <pubDate>Wed, 25 Nov 2020 23:05:53 +0100</pubDate>
-        <link>https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn</guid>
+        <link>http://localhost:4000/articles/2020-11/digit-recognizer-cnn</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-11/digit-recognizer-cnn</guid>
         
         <category>machine learning</category>
         
@@ -1854,8 +1854,8 @@ Accuracy = 0.8316498398780823
 &lt;/ol&gt;
 </description>
         <pubDate>Mon, 23 Nov 2020 21:09:00 +0100</pubDate>
-        <link>https://sulibo.github.io/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras</guid>
+        <link>http://localhost:4000/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras</guid>
         
         <category>machine learning</category>
         
@@ -2077,8 +2077,8 @@ P_k^-&amp;amp;=E[e^-_k e_k^{- \top}]=E[(x_k-x_k^-)(x_k-x_k^-)^\top]\\
 &lt;p&gt;&lt;img src=&quot;/assets/img/posts/kalman_filter_process.svg&quot; alt=&quot;Kalman filter process&quot; title=&quot; Kalman filter process&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jul 2020 17:51:18 +0200</pubDate>
-        <link>https://sulibo.github.io/articles/2020-07/kalman_filter</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2020-07/kalman_filter</guid>
+        <link>http://localhost:4000/articles/2020-07/kalman_filter</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-07/kalman_filter</guid>
         
         <category>control engineering</category>
         
@@ -2142,8 +2142,8 @@ P_k^-&amp;amp;=E[e^-_k e_k^{- \top}]=E[(x_k-x_k^-)(x_k-x_k^-)^\top]\\
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 07 Dec 2017 16:20:36 +0100</pubDate>
-        <link>https://sulibo.github.io/articles/2017-12/some-handy-software-tools</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-12/some-handy-software-tools</guid>
+        <link>http://localhost:4000/articles/2017-12/some-handy-software-tools</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2017-12/some-handy-software-tools</guid>
         
         
       </item>
@@ -2369,8 +2369,8 @@ If you follow the deployment steps in the previous section, your Octopress repos
 
 </description>
         <pubDate>Sat, 07 Oct 2017 09:50:20 +0200</pubDate>
-        <link>https://sulibo.github.io/articles/2017-10/octopress-3-tutorial</link>
-        <guid isPermaLink="true">https://sulibo.github.io/articles/2017-10/octopress-3-tutorial</guid>
+        <link>http://localhost:4000/articles/2017-10/octopress-3-tutorial</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2017-10/octopress-3-tutorial</guid>
         
         <category>jekyll</category>
         
