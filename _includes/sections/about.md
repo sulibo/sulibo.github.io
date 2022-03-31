@@ -1,8 +1,7 @@
 
 # About
-
-I am a PhD candidate in the <a href="http://wms.cs.kuleuven.be/groups/NUMA">NUMA (Numerical Analysis and Applied Mathematics) Research unit of Department of Computer Science</a>, <a href="http://www.kuleuven.be">KU Leuven</a> and the <a href="https://www.tue.nl/en/research/research-groups/dynamics-and-control/">Dynamics and Control group of Department of Mechanical Engineering</a>, <a href="http://www.tue.nl">Eindhoven University of Technology</a>. Meanwhile, I am also an early stage researcher (ESR 3) in an EU Marie Sklodowska-Curie Innovative Training Networks (ITN-EJD) project <a href="http://ucocos.cs.kuleuven.be"> UCoCoS</a>. I am working on partial synchronization in delay-coupled networks. The objective
-    is to analyze the robustness and parametric dependence of clusters when delay-coupled networks are paritially synchronized. I obtained my master degree from <a href="http://www.tue.nl">Eindhoven University of Technology</a>, the Netherlands. Before that, I received my bachelor degree from <a href="http://www.zju.edu.cn"> Zhejiang Universtiy</a>, China.
+I am a senior computer scientist at [Institute of Experimental Psychophysiology - Düsseldorf](https://ixp-duesseldorf.de/), working on developing machine learning based algorithms for affective computing and relevant research software.
+Before this, I was a PhD candidate in the <a href="http://wms.cs.kuleuven.be/groups/NUMA">NUMA (Numerical Analysis and Applied Mathematics) Research unit of Department of Computer Science</a>, <a href="http://www.kuleuven.be">KU Leuven</a> and the <a href="https://www.tue.nl/en/research/research-groups/dynamics-and-control/">Dynamics and Control group of Department of Mechanical Engineering</a>, <a href="http://www.tue.nl">Eindhoven University of Technology</a>. Meanwhile, I was also an early stage researcher (ESR 3) in an EU Marie Sklodowska-Curie Innovative Training Networks (ITN-EJD) project <a href="http://ucocos.cs.kuleuven.be"> UCoCoS</a>. During my PhD, I was working on partial synchronization in networks of delay-coupled systems. The objective was to analyze the robustness and parametric dependence of clusters when delay-coupled networks are paritially synchronized. I obtained my master degree from <a href="http://www.tue.nl">Eindhoven University of Technology</a>, the Netherlands. Before that, I received my bachelor degree from <a href="http://www.zju.edu.cn"> Zhejiang Universtiy</a>, China.
 
 # What's New
 We will oragnize the first UCoCoS training course on Lyapunov methods for time-delay systems at KU Leuven on March 12-14, 2018. 
@@ -24,9 +23,6 @@ We will oragnize the first UCoCoS training course on Lyapunov methods for time-d
 # Contact 
 Libo Su 
 
-**Email**: libo.su@kuleuven.be 
+**Email**: l.su@ixp-duesseldorf.de
 
-**Address**: Gemini Zuid, TU Eindhoven, De Rondom 70, 5612 AP Eindhoven, the Netherlands 
-
-**Office**: GEM-Z -1.123 
-
+**Address**: Gustav-Poensgen-Straße 29, 40215 Düsseldorf, Germany

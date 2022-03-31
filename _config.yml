@@ -7,7 +7,7 @@ title: Libo Su's Blog
 email: sulibozju@gmail.com
 description: Welcome to my blog.
 url: "https://sulibo.github.io" # the base hostname & protocol for your site
-keywords: ["Time Delay System","Control Theory"]
+keywords: ["Machine Learning","Time Delay System","Control Theory"]
 
 #
 ###################################
@@ -51,8 +51,8 @@ scholar:
 owner:
   name: Libo Su
   avatar: avatar.jpg
-  job: "PhD Candidate"
-  bio: "A PhD Candidate at KU Leuven, Belgium and Eindhoven University of Technology, the Netherlands"
+  job: "Senior Computer Scientist"
+  bio: "Senior Computer Scientist at Institute of Experimental Psychophysiology - Düsseldorf"
   email: sulibozju@gmail.com
   disqus-shortname: libosu
   twitter: sulibozju #username
