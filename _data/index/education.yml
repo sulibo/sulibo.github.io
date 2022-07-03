@@ -1,16 +1,19 @@
 - name: KU Leuven 
   link: http://kuleuven.be/
-  date: 2016 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  descr: PhD  <br> (expected in 2020)
+  date: 2016 - 2021
+  descr: PhD in Computer Science
+
+- name: Eindhoven University of Technology  
+  link: http://www.tue.nl/
+  date: 2016 - 2021
+  descr: PhD in Mechanical Engineering
 
 - name: Eindhoven University of Technology  
   link: http://www.tue.nl/
   date: 2011 - 2013
-  descr: Master of Science 
+  descr: Master of Science in Mechanical Engineering
 
 - name: Zhejiang University 
   link: http://www.zju.edu.cn
   date: 2007 - 2011 
-  descr: Bachelor in Engineering 
-
-
+  descr: Bachelor in Mechanical Engineering and Automation

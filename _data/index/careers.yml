@@ -1,9 +1,19 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: Institute of Experimental Psychophysiology - Düsseldorf
+  link: https://ixp-duesseldorf.de/
+  date: April 2021 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: Senior Computer Scientist
+
 - name: KU Leuven 
   link: http://www.kuleuven.be/
-  date: December 2016 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  job: PhD Candidate 
+  date: December 2016 - April 2021
+  job: PhD Candidate (EU Marie Curie Action Project)
+
+- name: Eindhoven University of Technology  
+  link: http://www.tue.nl/
+  date: December 2016 - April 2021
+  job: PhD Candidate (EU Marie Curie Action Project)
 
 - name: Syncreon 
   link: http://www.syncreon.com/
@@ -17,10 +27,5 @@
 
 - name: Philips 
   link: http://www.philips.com
-  date: January 2013 - August 2013
-  job: Full time intern (Master thesis)
-
-- name: Philps 
-  link: http://www.philips.com
-  date: August 2012 - December 2013 
-  job: Full time intern (Internship)
+  date: August 2013 - August 2013
+  job: Full time intern (Master thesis & Internship)
