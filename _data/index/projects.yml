@@ -2,3 +2,8 @@
   descr: ESR3 - Grip on partial synchronization in delay-coupled networks 
   website: https://wms.cs.kuleuven.be/ucocos/fellows/esr3-grip-on-partial-synchronization-in-delay-coupled-networks-4-years 
 
+- name: PainMonit 
+  descr: A machine learning based pain monitoring tool in the physiotherapeutic treatment context
+
+- name: MigAVE
+  descr: A robotic learning assistant for children with autsim spectrum disorder (ASD) 
