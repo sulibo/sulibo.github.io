@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://sulibo.github.io/</id>
+  <id>http://localhost:4000/</id>
   <title>Libo Su</title>
   <subtitle>Libo Su's personal blog</subtitle>
-  <updated>2022-08-12T17:23:48+02:00</updated>
+  <updated>2022-08-12T18:46:45+02:00</updated>
   <author>
     <name>Libo Su</name>
-    <uri>https://sulibo.github.io/</uri>
+    <uri>http://localhost:4000/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://sulibo.github.io/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
-    href="https://sulibo.github.io/"/>
+    href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
   <rights> © 2022 Libo Su </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>A Short Tutorial on Building a Digit Recognizer Using CNN</title>
-    <link href="https://sulibo.github.io/posts/digit-recognizer-cnn/" rel="alternate" type="text/html" title="A Short Tutorial on Building a Digit Recognizer Using CNN" />
+    <link href="http://localhost:4000/posts/digit-recognizer-cnn/" rel="alternate" type="text/html" title="A Short Tutorial on Building a Digit Recognizer Using CNN" />
     <published>2020-11-25T23:05:53+01:00</published>
   
     <updated>2020-11-26T15:40:31+01:00</updated>
   
-    <id>https://sulibo.github.io/posts/digit-recognizer-cnn/</id>
-    <content src="https://sulibo.github.io/posts/digit-recognizer-cnn/" />
+    <id>http://localhost:4000/posts/digit-recognizer-cnn/</id>
+    <content src="http://localhost:4000/posts/digit-recognizer-cnn/" />
     <author>
       <name>Libo Su</name>
     </author>
@@ -63,13 +63,13 @@ import n...
   
   <entry>
     <title>Yet Another Kaggle Titanic Competition Tutorial</title>
-    <link href="https://sulibo.github.io/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/" rel="alternate" type="text/html" title="Yet Another Kaggle Titanic Competition Tutorial" />
+    <link href="http://localhost:4000/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/" rel="alternate" type="text/html" title="Yet Another Kaggle Titanic Competition Tutorial" />
     <published>2020-11-23T21:09:00+01:00</published>
   
     <updated>2020-11-25T23:28:36+01:00</updated>
   
-    <id>https://sulibo.github.io/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/</id>
-    <content src="https://sulibo.github.io/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/" />
+    <id>http://localhost:4000/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/</id>
+    <content src="http://localhost:4000/posts/kaggle-titanic-competition-with-deep-neural-network-using-keras/" />
     <author>
       <name>Libo Su</name>
     </author>
@@ -99,13 +99,13 @@ The Titanic competition is probably the first competition you will com...
   
   <entry>
     <title>Kalman filter</title>
-    <link href="https://sulibo.github.io/posts/kalman_filter/" rel="alternate" type="text/html" title="Kalman filter" />
+    <link href="http://localhost:4000/posts/kalman_filter/" rel="alternate" type="text/html" title="Kalman filter" />
     <published>2020-07-20T17:51:18+02:00</published>
   
     <updated>2020-09-08T17:38:22+02:00</updated>
   
-    <id>https://sulibo.github.io/posts/kalman_filter/</id>
-    <content src="https://sulibo.github.io/posts/kalman_filter/" />
+    <id>http://localhost:4000/posts/kalman_filter/</id>
+    <content src="http://localhost:4000/posts/kalman_filter/" />
     <author>
       <name>Libo Su</name>
     </author>
@@ -136,13 +136,13 @@ From a control perspective, the Kalman filter is similar to a state observer. It
   
   <entry>
     <title>Some Handy Software Tools</title>
-    <link href="https://sulibo.github.io/posts/some-handy-software-tools/" rel="alternate" type="text/html" title="Some Handy Software Tools" />
+    <link href="http://localhost:4000/posts/some-handy-software-tools/" rel="alternate" type="text/html" title="Some Handy Software Tools" />
     <published>2017-12-07T16:20:36+01:00</published>
   
     <updated>2020-06-24T23:53:59+02:00</updated>
   
-    <id>https://sulibo.github.io/posts/some-handy-software-tools/</id>
-    <content src="https://sulibo.github.io/posts/some-handy-software-tools/" />
+    <id>http://localhost:4000/posts/some-handy-software-tools/</id>
+    <content src="http://localhost:4000/posts/some-handy-software-tools/" />
     <author>
       <name>Libo Su</name>
     </author>
@@ -196,13 +196,13 @@ LaTeX...
   
   <entry>
     <title>Octopress 3 Tutorial</title>
-    <link href="https://sulibo.github.io/posts/octopress-3-tutorial/" rel="alternate" type="text/html" title="Octopress 3 Tutorial" />
+    <link href="http://localhost:4000/posts/octopress-3-tutorial/" rel="alternate" type="text/html" title="Octopress 3 Tutorial" />
     <published>2017-10-07T09:50:20+02:00</published>
   
     <updated>2020-06-15T23:34:37+02:00</updated>
   
-    <id>https://sulibo.github.io/posts/octopress-3-tutorial/</id>
-    <content src="https://sulibo.github.io/posts/octopress-3-tutorial/" />
+    <id>http://localhost:4000/posts/octopress-3-tutorial/</id>
+    <content src="http://localhost:4000/posts/octopress-3-tutorial/" />
     <author>
       <name>Libo Su</name>
     </author>

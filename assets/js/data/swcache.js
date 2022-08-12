@@ -44,7 +44,7 @@ const resource = [
 const allowedDomains = [
   
 
-  'sulibo.github.io',
+  'localhost:4000',
 
   
 
