@@ -44,12 +44,12 @@
 <meta property="og:url" content="https://sulibo.github.io/tags/" />
 <meta property="og:site_name" content="Libo Su" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-08-12T18:56:38+02:00" />
+<meta property="article:published_time" content="2022-08-13T21:13:28+02:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Tags" />
 <meta name="twitter:site" content="@sulibozju" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-12T18:56:38+02:00","datePublished":"2022-08-12T18:56:38+02:00","description":"Libo Su’s personal blog","headline":"Tags","mainEntityOfPage":{"@type":"WebPage","@id":"https://sulibo.github.io/tags/"},"url":"https://sulibo.github.io/tags/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-13T21:13:28+02:00","datePublished":"2022-08-13T21:13:28+02:00","description":"Libo Su’s personal blog","headline":"Tags","mainEntityOfPage":{"@type":"WebPage","@id":"https://sulibo.github.io/tags/"},"url":"https://sulibo.github.io/tags/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -107,12 +107,18 @@
 
   <link rel="stylesheet" href="/assets/css/style.css">
 
+  <!-- Cookie Consent -->
+  
+      <link rel="stylesheet" href="/assets/plugins/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
+  
+
   
 
   
 
   <!-- JavaScript -->
 
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
 
   
@@ -191,16 +197,25 @@
     setDark() {
       $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     setLight() {
       $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     clearMode() {
       $('html').removeAttr(ModeToggle.MODE_ATTR);
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     /* Notify another plugins that the theme mode has changed */
@@ -1669,6 +1684,11 @@ SimpleJekyllSearch({
 <!-- commons -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script defer src="/assets/plugins/cookieconsent/cookieconsent.js"></script>
+<script defer src="/assets/plugins/cookieconsent/cookieconsent-init.js"></script>
+
 
 
 

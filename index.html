@@ -112,12 +112,18 @@
 
   <link rel="stylesheet" href="/assets/css/style.css">
 
+  <!-- Cookie Consent -->
+  
+      <link rel="stylesheet" href="/assets/plugins/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
+  
+
   
 
   
 
   <!-- JavaScript -->
 
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
 
   
@@ -196,16 +202,25 @@
     setDark() {
       $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     setLight() {
       $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     clearMode() {
       $('html').removeAttr(ModeToggle.MODE_ATTR);
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
+      if(true){
+        document.body.classList.toggle('c_darkmode');
+        }
     }
 
     /* Notify another plugins that the theme mode has changed */
@@ -2003,6 +2018,11 @@ SimpleJekyllSearch({
 <!-- commons -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script defer src="/assets/plugins/cookieconsent/cookieconsent.js"></script>
+<script defer src="/assets/plugins/cookieconsent/cookieconsent-init.js"></script>
+
 
 
 
