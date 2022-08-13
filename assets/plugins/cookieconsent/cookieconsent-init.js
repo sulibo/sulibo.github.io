@@ -1,4 +1,9 @@
+// change into dark mode if system prefers
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.toggle('c_darkmode');
+}
 // obtain plugin
+
 var cc = initCookieConsent();
 
 // run plugin with your configuration
