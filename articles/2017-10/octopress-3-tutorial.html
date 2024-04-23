@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been...">
+  <meta name="keywords" content="Machine Learning, Time Delay System, and Control Theory">
+  <meta name="author" content="Octopress 3 Tutorial | Libo Su&#39;s Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f5">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Octopress 3 Tutorial | Libo Su&#39;s Blog">
+  <meta name="twitter:description" content="Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been...">
+  
+    <meta property="twitter:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
+  
+
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="blog">
+  <meta property="og:url" content="https://sulibo.github.io/articles/2017-10/octopress-3-tutorial">
+  <meta property="og:title" content="Octopress 3 Tutorial | Libo Su&#39;s Blog">
+  <meta property="og:description" content="Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been...">
+  
+    <meta property="og:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
+  
+  <title>Octopress 3 Tutorial | Libo Su's Blog</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/css/main.css">
+
+  <link rel="canonical" href="https://sulibo.github.io/articles/2017-10/octopress-3-tutorial">
+  <link rel="alternate" type="application/rss+xml" title="Libo Su&#39;s Blog" href="https://sulibo.github.io/feed.xml" />
+
+  <!-- cookieconsent -->
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/plugins/cookieconsent/cookieconsent.css" media="print" onload="this.media=all">
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="https://sulibo.github.io/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="https://sulibo.github.io/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="https://sulibo.github.io/">
+    <img src="https://sulibo.github.io/assets/img/avatar.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="https://sulibo.github.io/" class="author_name">Libo Su</a>
+  <span class="author_job">Senior Computer Scientist</span>
+  <span class="author_bio mbm">Senior Computer Scientist at Institute of Experimental Psychophysiology - Düsseldorf</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="https://sulibo.github.io/">home</a>
+      </li>
+       
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/about/">About</a>
+      </li>
+        
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/archive/">Archive</a>
+      </li>
+        
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/categories/">Categories</a>
+      </li>
+              
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/tags/">Tags</a>
+      </li>
+           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('sulibozju@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    <li><a href="http://twitter.com/sulibozju" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    <li><a href="http://github.com/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="http://www.weibo.com/1923994851" class="social-link-item" target="_blank"><i class="fa fa-fw fa-weibo"></i></a></li>
+    
+    
+    
+  </ul>
+</div>
+
+
+  <!--table of content
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('sulibozju@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    <li><a href="http://twitter.com/sulibozju" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    <li><a href="http://github.com/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="http://www.weibo.com/1923994851" class="social-link-item" target="_blank"><i class="fa fa-fw fa-weibo"></i></a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  
+    
+    
+      <div style="background-color:	#F6F6F6F6;text-align: left; display: table; padding: 0em -10em 0em 0.5em;">
+        <h4>Table of Contents</h4>
+        
+      <ol>
+  <li><a href="#install">Install</a>
+    <ol>
+      <li><a href="#preparation">Preparation</a></li>
+      <li><a href="#install-octopress">Install Octopress</a></li>
+    </ol>
+  </li>
+  <li><a href="#setup">Setup</a></li>
+  <li><a href="#basic-usage">Basic Usage</a>
+    <ol>
+      <li><a href="#create-a-post">Create a Post</a></li>
+      <li><a href="#build-and-preview-the-site">Build and Preview the site</a></li>
+    </ol>
+  </li>
+  <li><a href="#deploy">Deploy</a></li>
+  <li><a href="#use-in-different-places">Use in different places</a>
+    <ol>
+      <li><a href="#clone-your-blog-to-the-new-location">Clone your blog to the new location</a></li>
+      <li><a href="#pushing-changes-from-two-different-machines">Pushing changes from two different machines</a></li>
+    </ol>
+  </li>
+</ol>
+
+    
+      </div>
+    
+  
+  -->
+</div>
+
+
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="post-listing">
+        <a class="btn" href= "https://sulibo.github.io/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Octopress 3 Tutorial">Octopress 3 Tutorial</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 OCT 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    9 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+
+  <article class="post-content">
+    <p>Octopress is a blog toolkit built on top of Jekyll. Using Octopress, we can easily build a static blog website from scratch. Recently, Octopress 3.0 has been released on its GitHub page. Octopress 3.0 is a full rewrite of Octopress 2. This version is now only a plugin for Jekyll so no division between Octopress and Jekyll. The management is cleaner than the previous versions. However,  the official documents are not complete yet. So I decided to write a tutorial for it, including installation, basic use, deployment to Github page, and also how
+to use Octopress from different places. 
+<!--more--></p>
+<h1 id="install">Install</h1>
+<h2 id="preparation">Preparation</h2>
+<p>Two packages are required before installing Octopress: Ruby and Git.</p>
+
+<p>In Arch Linux, you can install these two software by the following commands in your terminal.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> ruby 
+<span class="nv">$ </span><span class="nb">sudo </span>pacman <span class="nt">-S</span> git
+</code></pre></div></div>
+<p>For other Linux distributions, use the corresponding package managers to install these two packages. For example, for Ubuntu user, use the following commands.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>ruby 
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>git 
+</code></pre></div></div>
+
+<h2 id="install-octopress">Install Octopress</h2>
+<p>With Ruby and Git installed, you can easily install Octopress.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>octopress
+</code></pre></div></div>
+<p>Or you can use <a href="https://bundler.io">Bundler</a>. Bundler can be installed by Gem.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>bundler
+
+</code></pre></div></div>
+<p>Create a fine named ‘Gemfile’ in your site’s root directory with the following content:</p>
+<pre><code class="language-Gemfile">source 'https://rubygems.org'
+gem 'octopress', '~&gt;3.0'
+</code></pre>
+<p>And then run</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle
+</code></pre></div></div>
+<h1 id="setup">Setup</h1>
+<p>With the new Octopress CLI commands, seting up your blog site is easy.</p>
+
+<p>First, navigate to your working directory and run the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress new your_blog_site_name
+</code></pre></div></div>
+<p>Octopress will generate a directory named <strong>your_blog_site_name</strong> with scaffolding for the website.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>your_blog_site_name
+.
+│___ _config.yml
+|___ .gitignore
+|___ .sass-cache
+|___ about.md
+|___ Gemfile
+|___ Gemfile.lock
+|___ index.md
+|___ _posts
+|    |___ 2017-10-07-welcome-to-jekyll.makrdown 
+|___ _templates
+     |___ draft 
+     |___ page 
+     |___ post
+</code></pre></div></div>
+<p>You will need to configure the setting for your website. The configuration file is <strong>_config.yml</strong> located in the root directory of the site. Below is an example of such file. In this file, you can add the information of your site (title, url, social accouts, etc.).</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via Libo Su's Blog, sulibozju@gmail.com, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via .
+title: Your awesome title
+email: your-email@example.com
+description: &gt;- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+</code></pre></div></div>
+<h1 id="basic-usage">Basic Usage</h1>
+<h2 id="create-a-post">Create a Post</h2>
+<p>Octopress provides the following Octopress CLI command to create a post</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress new post Hello World 
+</code></pre></div></div>
+<p>This command create a new blog post with the tile of <code class="highlighter-rouge">Hello World</code>. You can change the title to any title you like. The newly created post can be found in the <strong>_post</strong> directory, which looks like below:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: post 
+title: "Hello World"
+---
+</code></pre></div></div>
+<p>The post file is a markdown file by default. You can add you content below the second <code class="highlighter-rouge">---</code>. The lines between the two triple-hyphen <code class="highlighter-rouge">---</code> is the YAML front matter, where you can set predefined and custom variables, such as Categories, Tags and permalink for the post. More details can be found in <a href="https://jekyllrb.com/docs/frontmatter/">Jekyll Documentation</a>.</p>
+
+<h2 id="build-and-preview-the-site">Build and Preview the site</h2>
+<p>Octopress use Jekyll commands for building and preview the site. We can use the following command to build:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
+</code></pre></div></div>
+<p>This command will build a static HTML website in the <strong>_site</strong> directory.</p>
+
+<p>To preview the site built, use the command below</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll serve 
+</code></pre></div></div>
+<p>Use you favorite browser to view it at the address <code class="highlighter-rouge">localhost: 4000</code>.</p>
+
+<h1 id="deploy">Deploy</h1>
+<p>Octopress includes a deploy module, called <a href="https://github.com/octopress/deploy">octopress deploy</a> that allows your site to be deployed to Rsync, S3 or GitHub papges. I deploy my site on GitHub page and the required steps are listed below.</p>
+
+<p>First, create a repository named <strong>username.github.io</strong> on your Github. Your blog can be accessed via “https://username.github.io” after deployment. The “username” should be your own username.</p>
+
+<p>Then, set up the deployment configuration by <code class="highlighter-rouge">octopress deploy</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io
+</code></pre></div></div>
+<p>Remember to replace “username” with your own username.</p>
+
+<p>Update the <strong>_config.yml</strong> if necessary (for example, add your blog URL). The line start with “url” in <strong>_config.yml</strong> should be</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url: "https://username.github.io" # the base hostname &amp; protocal for your site , e.g. http://exampel.com 
+</code></pre></div></div>
+
+<p>Build your site.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
+</code></pre></div></div>
+<p>Deploy your site to GitHub page.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy 
+</code></pre></div></div>
+<p>After this, you can view your site at https://username.github.io.</p>
+
+<p>With <code class="highlighter-rouge">octopress deploy</code>, a master branch is created in the directory <strong>.deploy</strong> and pushed to your GitHub page repository.</p>
+
+<p>To manage the source code, we can create a <code class="highlighter-rouge">source</code> branch and push it to your GitHub page repository.</p>
+
+<p>First add the following two lines in your <code class="highlighter-rouge">.gitignore</code> file.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.deploy 
+_deploy.yml
+</code></pre></div></div>
+
+<p>Set your site’s root directory as a Git repository. In your site’s root directory, run</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
+</code></pre></div></div>
+<p>Add the remote.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote add origin git@github.com:username/username.github.io
+</code></pre></div></div>
+<p>Create the <code class="highlighter-rouge">source</code> branch.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> <span class="nb">source</span> 
+</code></pre></div></div>
+<p>Push the source code to GitHub.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nb">.</span> 
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Initialization"</span> 
+<span class="nv">$ </span>git push origin <span class="nb">source</span> 
+</code></pre></div></div>
+
+<h1 id="use-in-different-places">Use in different places</h1>
+<p>This section describes how to recreate a local repository of your Octopress blog. This allows you to blog from different places.</p>
+
+<p>Before we start, let us have a look at how Octopress works. 
+If you follow the deployment steps in the previous section, your Octopress repository on GitHub have two branches, <code class="highlighter-rouge">source</code> and <code class="highlighter-rouge">master</code>. The <code class="highlighter-rouge">source</code> branch contains the files to generate the blog and the <code class="highlighter-rouge">master</code> contains the blog itself. In the local repository, the <code class="highlighter-rouge">master</code> branch is stored in the subdirectory named <strong>.deploy</strong>. With ‘.deploy’ in the <strong>.gitignore</strong> file, it is ignored when you run <code class="highlighter-rouge">git push origin source</code>. The <code class="highlighter-rouge">master</code> branch is updated when you run <code class="highlighter-rouge">octopress deploy</code>.</p>
+
+<h2 id="clone-your-blog-to-the-new-location">Clone your blog to the new location</h2>
+<p>At the new location, clone the <code class="highlighter-rouge">source</code> branch to the local Octopress folder.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="nt">-b</span> <span class="nb">source </span>git@github.com:username/username.github.io.git your_blog_site_name
+</code></pre></div></div>
+<p>Then install Octopress using Bundler.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>your_blog_site_name
+<span class="nv">$ </span>bundle 
+</code></pre></div></div>
+<p>Build the site.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
+</code></pre></div></div>
+
+<p>Set up GitHub pages deployment.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy init git git@github.com:username/username.github.io.git
+</code></pre></div></div>
+<p>Pull the <code class="highlighter-rouge">master</code> branch from the GitHub repository via <code class="highlighter-rouge">octopress deploy</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>octopress deploy
+</code></pre></div></div>
+<p>Note that in Octopress 3.0, <code class="highlighter-rouge">octopress deploy</code> includes the step of cloning (pulling) the <code class="highlighter-rouge">master</code> branch from the remote to the folder <strong>.deploy</strong> folder.</p>
+
+<h2 id="pushing-changes-from-two-different-machines">Pushing changes from two different machines</h2>
+<p>To blog from more than one computer, you must make sure you push everything before switching between computers. In the first machine, follow the instructions after you have made the changes</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
+<span class="nv">$ </span>octopress deploy <span class="c"># update the blog and the remote master branch </span>
+<span class="nv">$ </span>git add <span class="nb">.</span> 
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"some comments"</span> 
+<span class="nv">$ </span>git push origin <span class="nb">source</span> <span class="c"># update the remote source branch</span>
+</code></pre></div></div>
+<p>In the second machine, pull the changes</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git pull origin <span class="nb">source</span> <span class="c">#update the local source branch </span>
+</code></pre></div></div>
+<p>After making the changes, update the blog and update the repository again</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build 
+<span class="nv">$ </span>octopress deploy <span class="c"># udpate the blog and the remote master branch </span>
+<span class="nv">$ </span>git add <span class="nb">.</span> 
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"some comments"</span> 
+<span class="nv">$ </span>git push origin <span class="nb">source</span> 
+</code></pre></div></div>
+
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+<!-- remove Goolge Plus and Hacker-new share buttons
+    <li>
+      <a href="https://plus.google.com/share?url=https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+-->
+    <li>
+      <a href="https://www.reddit.com/submit?url=https://sulibo.github.io/articles/2017-10/octopress-3-tutorial" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+<div>
+  
+  
+    <a style="float: right; font-weight: bold; " href="/articles/2017-12/some-handy-software-tools">Some Handy Software Tools &raquo;</a>
+  
+  <br><br>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/plain" data-cookiecategory="analytics">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'libosu';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+  
+
+        <footer>
+  &copy; 2024 Libo Su. Powered by <a href="http://octopress.org/">Octopress 3.0</a> and <a href="http://github.com/renyuanz/leonids/">Leonids theme</a>.
+</footer>
+
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="table under-cover">
+        
+<div class="table-cell table-middle">
+  
+     
+      
+
+      
+        <div class="toc">
+        <h4>Table of Contents</h4>
+        
+        <ol id="post-toc">
+  <li><a href="#install">Install</a>
+    <ol>
+      <li><a href="#preparation">Preparation</a></li>
+      <li><a href="#install-octopress">Install Octopress</a></li>
+    </ol>
+  </li>
+  <li><a href="#setup">Setup</a></li>
+  <li><a href="#basic-usage">Basic Usage</a>
+    <ol>
+      <li><a href="#create-a-post">Create a Post</a></li>
+      <li><a href="#build-and-preview-the-site">Build and Preview the site</a></li>
+    </ol>
+  </li>
+  <li><a href="#deploy">Deploy</a></li>
+  <li><a href="#use-in-different-places">Use in different places</a>
+    <ol>
+      <li><a href="#clone-your-blog-to-the-new-location">Clone your blog to the new location</a></li>
+      <li><a href="#pushing-changes-from-two-different-machines">Pushing changes from two different machines</a></li>
+    </ol>
+  </li>
+</ol>
+
+      
+        </div>
+      
+    
+  
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://sulibo.github.io//assets/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="https://sulibo.github.io//assets/js/main.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script type="text/plain" data-cookiecategory="analytics">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42887873-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<!--back-to-top-button-->    
+  <script src="https://sulibo.github.io//assets/js/back-to-top.js"></script>
+
+<!--toc-highlight-->    
+  <script src="https://sulibo.github.io//assets/js/locate-toc-list.js"></script>
+
+<!--cookie-consent-->    
+  <script defer src="https://sulibo.github.io//assets/plugins/cookieconsent/cookieconsent.js"></script>
+  <script defer src="https://sulibo.github.io//assets/plugins/cookieconsent/cookieconsent-init.js"></script>
+
+<!--LaTeX support-->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']], // $...$ as math delimiters
+    processEscapes: true,      // use \\$ to produce a literal dollar sign
+    tags: 'ams',               // automatic numbering 
+    useLabelIds: true,         // using label not tag for cross reference  
+    processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
+    processRefs: true          // process \ref{...} outside of math mode
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  options: {
+    renderActions: {
+      findScript: [10, function (doc) {
+        for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+          const display = !!node.type.match(/; *mode=display/);
+          const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+          const text = document.createTextNode('');
+          node.parentNode.replaceChild(text, node);
+          math.start = {node: text, delim: '', n: 0};
+          math.end = {node: text, delim: '', n: 0};
+          doc.math.push(math);
+        }
+      }, '']
+    }
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  <button id="btn-top" class="btn-top" title= "Go to top">&#9650</button>
+</body>
+</html>

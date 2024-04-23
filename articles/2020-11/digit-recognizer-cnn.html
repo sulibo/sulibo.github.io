@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. The accompanying notebook can be found here.">
+  <meta name="keywords" content="Machine Learning, Time Delay System, and Control Theory">
+  <meta name="author" content="A Short Tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f5">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="A Short Tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
+  <meta name="twitter:description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. The accompanying notebook can be found here.">
+  
+    <meta property="twitter:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
+  
+
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="blog">
+  <meta property="og:url" content="https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn">
+  <meta property="og:title" content="A Short Tutorial on Building a Digit Recognizer Using CNN | Libo Su&#39;s Blog">
+  <meta property="og:description" content="This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. The accompanying notebook can be found here.">
+  
+    <meta property="og:image" content="https://sulibo.github.io/assets/img/leonids-logo.png">
+  
+  <title>A Short Tutorial on Building a Digit Recognizer Using CNN | Libo Su's Blog</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/css/main.css">
+
+  <link rel="canonical" href="https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn">
+  <link rel="alternate" type="application/rss+xml" title="Libo Su&#39;s Blog" href="https://sulibo.github.io/feed.xml" />
+
+  <!-- cookieconsent -->
+  <link rel="stylesheet" href="https://sulibo.github.io/assets/plugins/cookieconsent/cookieconsent.css" media="print" onload="this.media=all">
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="https://sulibo.github.io/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="https://sulibo.github.io/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="https://sulibo.github.io/">
+    <img src="https://sulibo.github.io/assets/img/avatar.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="https://sulibo.github.io/" class="author_name">Libo Su</a>
+  <span class="author_job">Senior Computer Scientist</span>
+  <span class="author_bio mbm">Senior Computer Scientist at Institute of Experimental Psychophysiology - Düsseldorf</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="https://sulibo.github.io/">home</a>
+      </li>
+       
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/about/">About</a>
+      </li>
+        
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/archive/">Archive</a>
+      </li>
+        
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/categories/">Categories</a>
+      </li>
+              
+      <li class="nav-item">
+         <span>/</span>
+         <a href="https://sulibo.github.io/tags/">Tags</a>
+      </li>
+           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('sulibozju@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    <li><a href="http://twitter.com/sulibozju" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    <li><a href="http://github.com/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="http://www.weibo.com/1923994851" class="social-link-item" target="_blank"><i class="fa fa-fw fa-weibo"></i></a></li>
+    
+    
+    
+  </ul>
+</div>
+
+
+  <!--table of content
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('sulibozju@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    <li><a href="http://twitter.com/sulibozju" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    <li><a href="http://github.com/sulibo" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="http://www.weibo.com/1923994851" class="social-link-item" target="_blank"><i class="fa fa-fw fa-weibo"></i></a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  
+    
+    
+      <div style="background-color:	#F6F6F6F6;text-align: left; display: table; padding: 0em -10em 0em 0.5em;">
+        <h4>Table of Contents</h4>
+        
+      <ol>
+  <li><a href="#define-the-problem">Define the problem</a></li>
+  <li><a href="#acquire-the-data">Acquire the data</a></li>
+  <li><a href="#prepare-the-data">Prepare the data</a>
+    <ol>
+      <li><a href="#data-overview">Data Overview</a></li>
+      <li><a href="#normalization">Normalization</a></li>
+      <li><a href="#reshape-the-data">Reshape the data</a></li>
+      <li><a href="#split-the-dataset">Split the dataset</a></li>
+    </ol>
+  </li>
+  <li><a href="#define-the-model">Define the model</a></li>
+  <li><a href="#train-the-model">Train the model</a></li>
+  <li><a href="#evulate-the-model">Evulate the model</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+    
+      </div>
+    
+  
+  -->
+</div>
+
+
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="post-listing">
+        <a class="btn" href= "https://sulibo.github.io/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="A Short Tutorial on Building a Digit Recognizer Using CNN">A Short Tutorial on Building a Digit Recognizer Using CNN</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        25 NOV 2020
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+
+  <article class="post-content">
+    <p>This is a brief tutorial on developing a digit recognizer using CNN and MNIST Data. The accompanying notebook can be found <a href="https://github.com/sulibo/code_snipets/tree/main/Machine_Learning/Digit_Recognizer_CNN">here</a>.
+<!--more--></p>
+<h2 id="define-the-problem">Define the problem</h2>
+<p>The goal here is to correctly identify digits from a dataset of tens of thousands of handwritten images. The MNIST dataset is used for training and testing.</p>
+
+<p>Before going forward, the necessary modules need to be imported.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># data analysis
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> 
+
+<span class="c1"># visualization 
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span> 
+<span class="n">sns</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s">'notebook'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'deep'</span><span class="p">)</span>
+
+<span class="c1"># machine learning 
+</span><span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span> 
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="c1">#import keras
+</span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span> <span class="c1"># convert to one-hot-encoding
+</span><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPool2D</span> 
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">SGD</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span> 
+<span class="kn">from</span> <span class="nn">tensorflow.keras.callbacks</span> <span class="kn">import</span> <span class="n">ReduceLROnPlateau</span> 
+
+<span class="c1"># utils
+</span><span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="p">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s">'ignore'</span><span class="p">)</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<h2 id="acquire-the-data">Acquire the data</h2>
+
+<p>The MNIST data can be loaded using Keras.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data 
+</span><span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot some examples
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s">'gray'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p><img src="/assets/img/posts/Digit_Recognizer_CNN/output_4_0.png" alt="png" /></p>
+
+<h2 id="prepare-the-data">Prepare the data</h2>
+
+<h3 id="data-overview">Data Overview</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Train: X=%s, y=%s'</span> <span class="o">%</span><span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Test: X=%s, y=%s'</span> <span class="o">%</span><span class="p">(</span><span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">Y_train</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train: X=(60000, 28, 28), y=(60000,)
+Test: X=(10000, 28, 28), y=(10000,)
+</code></pre></div></div>
+
+<p><img src="/assets/img/posts/Digit_Recognizer_CNN/output_6_1.png" alt="png" /></p>
+
+<p>The training dataset contains 60000 examples, while the test dataset contains 10000 exmpales. Each example is a 28x28 pixels figure.
+In addition, we have simlar counts for the 10 digits.</p>
+
+<h3 id="normalization">Normalization</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Normalize the data 
+</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="mf">255.0</span> 
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">/</span> <span class="mf">255.0</span> 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Encode lables to one hot vectors (ex: 2 -&gt; [0,0,1,0,0,0,0,0,0,0])
+</span><span class="n">Y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">Y_train</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="reshape-the-data">Reshape the data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># X_train shape M (number of samples) x H (Height) x W (Width) x D (Depth)
+</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="split-the-dataset">Split the dataset</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="define-the-model">Define the model</h2>
+
+<p>We use the Keras API to build a Convolutional Neural Network model to reconginze the digits in the figures.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set the CNN model 
+# In -&gt; Conv2D -&gt; relu -&gt; MaxPool2D -&gt; Conv2D -&gt; relu -&gt; Conv2D -&gt; relu -&gt; MaxPool2D -&gt; Flatten -&gt; Dense -&gt; Dense -&gt; Out
+</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s">'he_uniform'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPool2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s">'he_uniform'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s">'he_uniform'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPool2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s">'he_uniform'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+
+<span class="c1">#opt = Adam(lr=0.01)
+</span><span class="n">opt</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">'categorical_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 26, 26, 32)        320       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 13, 13, 32)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 11, 11, 64)        18496     
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 9, 9, 64)          36928     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 4, 4, 64)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 1024)              0         
+_________________________________________________________________
+dense (Dense)                (None, 100)               102500    
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                1010      
+=================================================================
+Total params: 159,254
+Trainable params: 159,254
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div></div>
+
+<h2 id="train-the-model">Train the model</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span><span class="p">),</span> <span class="n">verbose</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/10
+1688/1688 [==============================] - 28s 17ms/step - loss: 0.1290 - accuracy: 0.9600 - val_loss: 0.0554 - val_accuracy: 0.9815
+Epoch 2/10
+1688/1688 [==============================] - 28s 16ms/step - loss: 0.0440 - accuracy: 0.9863 - val_loss: 0.0485 - val_accuracy: 0.9850
+Epoch 3/10
+1688/1688 [==============================] - 28s 16ms/step - loss: 0.0289 - accuracy: 0.9906 - val_loss: 0.0393 - val_accuracy: 0.9878
+Epoch 4/10
+1688/1688 [==============================] - 28s 16ms/step - loss: 0.0205 - accuracy: 0.9933 - val_loss: 0.0306 - val_accuracy: 0.9908
+Epoch 5/10
+1688/1688 [==============================] - 30s 18ms/step - loss: 0.0155 - accuracy: 0.9952 - val_loss: 0.0356 - val_accuracy: 0.9907
+Epoch 6/10
+1688/1688 [==============================] - 32s 19ms/step - loss: 0.0117 - accuracy: 0.9962 - val_loss: 0.0362 - val_accuracy: 0.9903
+Epoch 7/10
+1688/1688 [==============================] - 35s 20ms/step - loss: 0.0083 - accuracy: 0.9974 - val_loss: 0.0381 - val_accuracy: 0.9910
+Epoch 8/10
+1688/1688 [==============================] - 35s 21ms/step - loss: 0.0063 - accuracy: 0.9982 - val_loss: 0.0305 - val_accuracy: 0.9920
+Epoch 9/10
+1688/1688 [==============================] - 35s 21ms/step - loss: 0.0055 - accuracy: 0.9982 - val_loss: 0.0333 - val_accuracy: 0.9920
+Epoch 10/10
+1688/1688 [==============================] - 36s 21ms/step - loss: 0.0032 - accuracy: 0.9990 - val_loss: 0.0366 - val_accuracy: 0.9918
+</code></pre></div></div>
+
+<p>The training accuracy is 0.9990, and the validation accuracy is 0.9918.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Save the model
+</span><span class="n">model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'cnn_model.h5'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="evulate-the-model">Evulate the model</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predict results
+</span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>313/313 [==============================] - 2s 5ms/step - loss: 0.0325 - accuracy: 0.9919
+</code></pre></div></div>
+
+<p>The accuracy on the test dataset is 0.9919.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first few predictions
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,:,:,:])</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">predicted_digit</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:,</span><span class="mi">0</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s">'gray'</span><span class="p">));</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"Prediction: %s"</span> <span class="o">%</span><span class="n">predicted_digit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/img/posts/Digit_Recognizer_CNN/output_25_0.png" alt="png" /></p>
+
+<h2 id="references">References</h2>
+<p>This tutorial has been created based on great work done solving this digit recognizer problem.</p>
+
+<ol>
+  <li><a href="https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/">https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-from-scratch-for-mnist-handwritten-digit-classification/</a></li>
+  <li><a href="https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6">https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6</a></li>
+</ol>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+<!-- remove Goolge Plus and Hacker-new share buttons
+    <li>
+      <a href="https://plus.google.com/share?url=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+-->
+    <li>
+      <a href="https://www.reddit.com/submit?url=https://sulibo.github.io/articles/2020-11/digit-recognizer-cnn" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+<div>
+  
+    <a style="float: left; font-weight: bold; " href="/articles/2020-11/kaggle-titanic-competition-with-deep-neural-network-using-keras">&laquo; Yet Another Kaggle Titanic Competition Tutorial</a>
+  
+  
+  <br><br>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/plain" data-cookiecategory="analytics">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'libosu';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+  
+
+        <footer>
+  &copy; 2024 Libo Su. Powered by <a href="http://octopress.org/">Octopress 3.0</a> and <a href="http://github.com/renyuanz/leonids/">Leonids theme</a>.
+</footer>
+
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="table under-cover">
+        
+<div class="table-cell table-middle">
+  
+     
+      
+
+      
+        <div class="toc">
+        <h4>Table of Contents</h4>
+        
+        <ol id="post-toc">
+  <li><a href="#define-the-problem">Define the problem</a></li>
+  <li><a href="#acquire-the-data">Acquire the data</a></li>
+  <li><a href="#prepare-the-data">Prepare the data</a>
+    <ol>
+      <li><a href="#data-overview">Data Overview</a></li>
+      <li><a href="#normalization">Normalization</a></li>
+      <li><a href="#reshape-the-data">Reshape the data</a></li>
+      <li><a href="#split-the-dataset">Split the dataset</a></li>
+    </ol>
+  </li>
+  <li><a href="#define-the-model">Define the model</a></li>
+  <li><a href="#train-the-model">Train the model</a></li>
+  <li><a href="#evulate-the-model">Evulate the model</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+      
+        </div>
+      
+    
+  
+</div>
+
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://sulibo.github.io//assets/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="https://sulibo.github.io//assets/js/main.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script type="text/plain" data-cookiecategory="analytics">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42887873-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<!--back-to-top-button-->    
+  <script src="https://sulibo.github.io//assets/js/back-to-top.js"></script>
+
+<!--toc-highlight-->    
+  <script src="https://sulibo.github.io//assets/js/locate-toc-list.js"></script>
+
+<!--cookie-consent-->    
+  <script defer src="https://sulibo.github.io//assets/plugins/cookieconsent/cookieconsent.js"></script>
+  <script defer src="https://sulibo.github.io//assets/plugins/cookieconsent/cookieconsent-init.js"></script>
+
+<!--LaTeX support-->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']], // $...$ as math delimiters
+    processEscapes: true,      // use \\$ to produce a literal dollar sign
+    tags: 'ams',               // automatic numbering 
+    useLabelIds: true,         // using label not tag for cross reference  
+    processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
+    processRefs: true          // process \ref{...} outside of math mode
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  options: {
+    renderActions: {
+      findScript: [10, function (doc) {
+        for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+          const display = !!node.type.match(/; *mode=display/);
+          const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+          const text = document.createTextNode('');
+          node.parentNode.replaceChild(text, node);
+          math.start = {node: text, delim: '', n: 0};
+          math.end = {node: text, delim: '', n: 0};
+          doc.math.push(math);
+        }
+      }, '']
+    }
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  <button id="btn-top" class="btn-top" title= "Go to top">&#9650</button>
+</body>
+</html>

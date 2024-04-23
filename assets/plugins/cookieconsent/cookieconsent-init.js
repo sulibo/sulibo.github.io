@@ -1,29 +1,4 @@
-// follow the system preference (based on _includes/mode-toggle.html
-let mode = sessionStorage.getItem('mode');
-
-if (mode === 'dark') {
-    document.body.classList.add('c_darkmode');
-}
-if (mode === 'light') {
-    document.body.classList.remove('c_darkmode');
-}
-
-// toggle the mode (based on _includes/mode-toggle.html
-window.addEventListener('message', (event) => {
-    if (event.data.message === 'dark') {
-    document.body.classList.add('c_darkmode');
-    }
-    if (event.data.message === 'light') {
-    document.body.classList.remove('c_darkmode');
-    }
-}
-)
-
-//if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-//        document.body.classList.toggle('c_darkmode');
-//}
 // obtain plugin
-
 var cc = initCookieConsent();
 
 // run plugin with your configuration
