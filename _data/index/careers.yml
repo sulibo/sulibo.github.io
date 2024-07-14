@@ -1,8 +1,12 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: ALCiDES Robotics GmbH
+  link: https://www.alcides.tech/
+  date: September 2022 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: Senior R&D Engineer
 - name: Institute of Experimental Psychophysiology - Düsseldorf
   link: https://ixp-duesseldorf.de/
-  date: April 2021 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  date: April 2021 - August 2022
   job: Senior Computer Scientist
 
 - name: KU Leuven 
