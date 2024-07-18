@@ -23,3 +23,8 @@ Today I Learned: collection of notes, tips, tricks and stuff I learn from day to
 
 ## ROS 
 - [ROS with Docker](https://github.com/2b-t/docker-for-robotics)
+
+## SLAM
+- Optical Flow
+    - [Tutorial](https://nanonets.com/blog/optical-flow/)
+    - [Video](https://www.youtube.com/watch?v=lnXFcmLB7sM&ab_channel=FirstPrinciplesofComputerVision)
