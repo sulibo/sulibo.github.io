@@ -5,8 +5,8 @@
     <description>Welcome to my blog.</description>
     <link>https://sulibo.github.io/</link>
     <atom:link href="https://sulibo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 14 Jul 2024 15:41:46 +0200</pubDate>
-    <lastBuildDate>Sun, 14 Jul 2024 15:41:46 +0200</lastBuildDate>
+    <pubDate>Thu, 18 Jul 2024 15:52:46 +0200</pubDate>
+    <lastBuildDate>Thu, 18 Jul 2024 15:52:46 +0200</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -24,6 +24,16 @@
 &lt;h2 id=&quot;ros&quot;&gt;ROS&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/2b-t/docker-for-robotics&quot;&gt;ROS with Docker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;slam&quot;&gt;SLAM&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Optical Flow
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://nanonets.com/blog/optical-flow/&quot;&gt;Tutorial&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lnXFcmLB7sM&amp;amp;ab_channel=FirstPrinciplesofComputerVision&quot;&gt;Video&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 07 Jul 2024 15:35:00 +0200</pubDate>
