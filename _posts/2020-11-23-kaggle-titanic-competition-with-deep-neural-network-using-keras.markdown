@@ -1799,4 +1799,4 @@ Submission of this result on Kaggle results in a public score of 0.77751,  ranki
 This tutorial has been created based on great work done solving the Titanic competition and machine learning.
 1. [https://zhuanlan.zhihu.com/p/50194676](https://zhuanlan.zhihu.com/p/50194676)
 2. [https://www.kaggle.com/startupsci/titanic-data-science-solutions](https://www.kaggle.com/startupsci/titanic-data-science-solutions)
-3. [https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html](https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html)
+3. [https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.html](https://www.kdnuggets.com/2020/09/mathworks-deep-learning-workflow.htmlq) <a name="ref3" href="#"></a>
