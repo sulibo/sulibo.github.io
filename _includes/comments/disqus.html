@@ -1,10 +1,13 @@
 <!-- The Disqus lazy loading. -->
 
 <div id="disqus_thread">
-  <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
+  <p class="text-center text-muted small">
+    Comments powered by <a href="https://disqus.com/">Disqus</a>. Accept
+    <a href="#" data-cc="show-preferencesModal">cookies</a> to comment.
+  </p>
 </div>
 
-<script type="text/javascript">
+<script type="text/plain" data-category="analytics" data-service="Disqus">
   var disqus_config = function () {
     this.page.url = '{{ page.url | absolute_url }}';
     this.page.identifier = '{{ page.url }}';

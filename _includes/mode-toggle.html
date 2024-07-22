@@ -72,6 +72,7 @@
     setDark() {
       document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      document.documentElement.classList.add('cc--darkmode');
     }
 
     setLight() {
@@ -82,6 +83,7 @@
     clearMode() {
       document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
+      document.documentElement.classList.remove('cc--darkmode');
     }
 
     {%- comment -%}
