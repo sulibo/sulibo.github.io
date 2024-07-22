@@ -26,8 +26,8 @@ Here are some software tools I used which are handy for my daily use of laptops.
 
 ##### LaTeX
 
-* LaTeX tutorial: [LaTeX notes (Chinese)](http://dralpha.altervista.org/zh/tech/lnotes2.pdf)
-* Tikz Examples: [TeXample.net](http://www.texample.net)
+* LaTeX tutorial: [LaTeX notes (Chinese)](https://dralpha.altervista.org/zh/tech/lnotes2.pdf)
+* Tikz Examples: [TeXample.net](https://www.texample.net)
 * Editor: [TexStudio](https://www.texstudio.org/)
 
 ##### MATLAB 
