@@ -34,3 +34,8 @@ Today I Learned: collection of notes, tips, tricks and stuff I learn from day to
     - Unique pointers `unique_ptr`
     - Shared pointers `shared_ptr`
     - Weak pointers  `weak_ptr`
+- CMake
+    Modern CMake
+    - `cmake -S src -B build`
+    - `camke --build build`
+    - `cmake --install build`
