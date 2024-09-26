@@ -9,6 +9,7 @@ tags:
 - deep learning
 categories:
 - Tech
+math: true
 toc: true
 comments: true
 date: 2024-07-07 15:35 +0200
@@ -25,6 +26,28 @@ Today I Learned: collection of notes, tips, tricks and stuff I learn from day to
 - [ROS with Docker](https://github.com/2b-t/docker-for-robotics)
 
 ## SLAM
+- Special Orthogonal Group $SO(n)$
+$$ 
+\begin{equation}
+SO(n) = \{\mathbf{R}\in \mathbb{R}^{n\times n} | \mathbf{R}\mathbf{R}^\top=\mathbf{I}, \det{\mathbf{R}=1}\}.
+\end{equation}
+$$
+- Rotation Matrix $\mathbf{R}$ 
+- Transfer matrix 
+$$
+T = 
+\begin{bmatrix}
+\mathbf{R} & \mathbf{t}\\
+\mathbf{0}^\top & 1
+\end{bmatrix}
+$$
+- Rodrigues's Formula
+$$
+\begin{equation}
+\mathbf{R}=\cos\theta\mathbf{I}+(1-\cos\theta)\mathbf{n}\mathbf{n}^\top + \sin\theta \mathbf{n}^\wedge,
+\end{equation}
+$$
+where $\mathbf{R}$ is the rotation matrix, $\mathbf{n}$ is the rotation vector and $\theta$ is the rotation angle.
 - Optical Flow
     - [Tutorial](https://nanonets.com/blog/optical-flow/)
     - [Video](https://www.youtube.com/watch?v=lnXFcmLB7sM&ab_channel=FirstPrinciplesofComputerVision)
