@@ -67,3 +67,5 @@ where $\mathbf{R}$ is the rotation matrix, $\mathbf{n}$ is the rotation vector a
 - Service Mesh
     - [Introduction](https://aws.amazon.com/what-is/service-mesh/#:~:text=Learn%20what%20a%20service%20mesh%20is,%20why%20you)
     - [Istio](https://istio.io/): An open-source service mesh project
+- Cloud Native Architecture
+    - [Priciples for CNA](https://cloud.google.com/blog/products/application-development/5-principles-for-cloud-native-architecture-what-it-is-and-how-to-master-it)
