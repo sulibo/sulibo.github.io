@@ -17,10 +17,16 @@ date: 2024-07-07 15:35 +0200
 Today I Learned: collection of notes, tips, tricks and stuff I learn from day to day working with software, robotics and other stuff.
 <!--more-->
 ## Python
-- pytest
-- Flask
-- FastAPI
-- Django
+- Frameworks
+    - pytest
+    - Flask
+    - FastAPI
+    - Django
+
+- Functions/Types
+    - `map`
+    - `OrderedDict`
+    - `dictionary.setdefault(keyname, value)`
 
 ## ROS 
 - [ROS with Docker](https://github.com/2b-t/docker-for-robotics)
