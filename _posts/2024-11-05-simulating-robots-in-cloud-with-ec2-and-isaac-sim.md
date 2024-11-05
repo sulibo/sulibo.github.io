@@ -171,5 +171,6 @@ source ~/.bashrc
 ## Conclusion
 
 
-## References
-
+## Reference
+1. [Simulating Robots in the Cloud with EC2 and O3DE](https://mikelikesrobots.github.io/blog/simulation-in-cloud/)
+2. [Isaac Sim on AWS EC2 - Easy Installation](https://www.youtube.com/watch?v=RVMAyyVGAC4&ab_channel=TheConstruct)
