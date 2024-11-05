@@ -17,19 +17,152 @@ Recently, I have been working on a project that involves simulating robots in th
 
 In this post, I will show you how to set up the simulation environment (Isaac Sim) and ROS2 on AWS EC2 instances.
 
-## Isaac Sim
+## Introduction
+### Isaac Sim
 Isaac Sim is a simulation software that allows you to create and test robotic systems in a virtual environment.
 
-## Amazon EC2
+### Amazon EC2
 EC2 is a cloud computing service that provides virtual servers in the cloud. You can use EC2 to create and manage virtual machines (VMs) in the cloud.
 
+## Setup
 ### Launching an Instance for Simualtion
+Login your AWS account and navigate to the EC2 page. Click Launch Instance
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/EC2_panel.png "EC2 Panel")
+
+Give the instance a proper name, then go on to select the Ubuntu AMI. Click the dropdown  and select the Deep Learning Base OSS Nvidia GPU AMI. This AMI is the Ubuntu instance with Nvidia GPU drivers installed.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Instance_name_AMI.png "Instance AMI")
+
+Under the instance type, select any instance in the g5 family. Here, I choose the `g5.2xlarge` which is the best option I can choose with my budget.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Instance_type.png "Instance Type")
+
+For key pair, select the keypair you created before. If you don't have a key pair, click Create key pair and following the instructions on AWS.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Key_pair.png "Key Pair")
+
+For the Network Settings, click Edit. We will need some ports for SSH and remote desktop connections.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Network_settings.png "Network Settings")
+
+For the ssh connection, I set the Source type as Anywhere as I don't have a fix IP from my ISP.
+
+For the Remote Desktop Connection, I set the port range as 8443 which is the port used by DVC for the remote desktop connection.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Inbound_rules.png "Inbound Rules")
+
+Finally,  we need to configure the Storage. The default size is 65GB. But I need more than that, so I set the size to 120GB.
+
+![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Storage.png "Storage")
+
+Now, we are ready to launch! Click Launch instance. Wait for it to launch and ssh into it. 
+
+For this AMI, the Nvidia drivers and docker will be installed automatically. Executing the following command to check if the Nvidia drivers are installed and working properly.
+```bash
+nvidia-smi
+```
+Information about the Nvidia drivers will be displayed.
 
 ### Remote Desktop Viewer
 
+EC2 provides free licensing for DCV which is a high performance remote desktop viewer. We will use this tool to connect to the EC2 instance.
+
+1. Install a desktop environment and desktop manager
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y ubuntu-desktop gdm3 mesa-utils
+sudo sed -i s/'#WaylandEnable=false'/'WaylandEnable=false'/g /etc/gdm3/custom.conf
+sudo systemctl restart gdm3
+sudo nvidia-xconfig --preserve-busid --enable-all-gpus
+sudo systemctl isolate multi-user.target
+sudo systemctl isolate graphical.target
+```
+These commands will install the default Ubuntu desktop environment and gdm3 desktop manager.
+
+2. Install DCV
+
+```bash
+wget https://d1uj6qtbmh3dt5.cloudfront.net/NICE-GPG-KEY
+gpg --import NICE-GPG-KEY
+wget https://d1uj6qtbmh3dt5.cloudfront.net/2023.1/Servers/nice-dcv-2023.1-17701-ubuntu2204-x86_64.tgz
+tar -xvzf nice-dcv-2023.1-17701-ubuntu2204-x86_64.tgz && cd nice-dcv-2023.1-17701-ubuntu2204-x86_64
+sudo apt install ./nice-dcv-server_2023.1.17701-1_amd64.ubuntu2204.deb
+sudo apt install ./nice-dcv-web-viewer_2023.1.16388-1_amd64.ubuntu2204.deb
+sudo usermod -aG video dcv
+sudo apt install ./nice-xdcv_2023.1.565-1_amd64.ubuntu2204.deb
+sudo apt install ./nice-dcv-simple-external-authenticator_2023.1.228-1_amd64.ubuntu2204.deb
+```
+
+3. Auto-start DCV
+
+```bash
+sudo sed -i s/"#create-session = true"/"create-session = true"/g /etc/dcv/dcv.conf
+sudo sed -i s/'#owner = ""'/'owner = "ubuntu"'/g /etc/dcv/dcv.conf
+# Also enable clipboard for easier copy/paste
+sudo bash -c "cat <<EOF >> /etc/dcv/dcv.conf
+
+[clipboard]
+primary-selection-paste=true
+primary-selection-copy=true
+EOF"
+```
+This will configure the server to automatically start a session for the `ubuntu` user.
+
+4. Start the DCV server
+
+```bash
+sudo systemctl enable dcvserver
+sudo systemctl start dcvserver
+```
+
+The default `ubuntu` user has no password. To login to the remote desktop, a password is required. Set the password by the following command.
+
+```bash
+sudo passwd ubuntu
+```
+
+Once complete, you can connect the instance using the DCV client.  Look up the IP address of the EC2 instance. Assuming the IP adress is 123.123.123.123. Use your browser to connect to https://123.123.123.123:8443. Enter `ubuntu` and the password you set. You should be able to login to the remote desktop. 
+
 ### Installing Isaac Sim
 
+Installing Issac Sim is easy with this AMI. Follow the steps from the official documentation [Issac Sim Workstation Installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_workstation.html).
+
+```bash
+wget https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage
+sudo chmod +x omniverse-launcher-linux.AppImage
+sudo apt install libfuse  # needed for running omniverse-launcher
+```
+Double click the `omniverse-launcher-linux.AppImage` file to install the launcher.
+
+1. Install [Cache](https://docs.omniverse.nvidia.com/utilities/latest/cache/installation/workstation.html) from the Omniverse Launcher.
+
+2. Install [Nucleus](https://docs.omniverse.nvidia.com/nucleus/latest/workstation/installation.html) from the Omniverse Launcher.
+
+3. Install [Visual Studio Code](https://code.visualstudio.com/download) to view and debug source code.
+
+4. Install Isaac Sim from the Omniverse Launcher. Omniverse Isaac Sim can be found and installed on the Exchange tab in the Omniverse Launcher. To simplify the process, enter “isaac sim” in the search bar. When installation is complete, go to the Library tab and select Isaac Sim in the sidebar. To run the Isaac Sim App Selector, click the Launch button.
+
 ### Installing ROS2 
+Now let's continue with the ROS2 installation. ROS2 can be installed by following the official guide [ROS2 Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
+
+```bash
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y ros-humble-desktop ros-dev-tools
+```
+Source the ROS2 setup automatically.
+
+```bash
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+source ~/.bashrc
+```
 
 ## Running the Simulation on AWS EC2
 
