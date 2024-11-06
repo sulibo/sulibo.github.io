@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Simulating Robots in cloud with EC2 and Isaac Sim
+title: Simulating robots in cloud with EC2 and Isaac Sim
 tags:
 - ROS
-- Cloud
+- cloud
 - AWS
 - Isaac Sim
 categories:
@@ -19,44 +19,45 @@ In this post, I will show you how to set up the simulation environment (Isaac Si
 
 ## Introduction
 ### Isaac Sim
-Isaac Sim is a simulation software that allows you to create and test robotic systems in a virtual environment.
+The Nvidia Isaac Sim is a powerful tool for creating and testing robotic systems. It provides a wide range of features, including physics simulation, rendering, and AI integration.
 
 ### Amazon EC2
-EC2 is a cloud computing service that provides virtual servers in the cloud. You can use EC2 to create and manage virtual machines (VMs) in the cloud.
+EC2 is a cloud computing service provided by Amazon Web Services (AWS). It provides a wide range of compute, storage, and networking resources to build and run applications in the cloud. The g5 family of EC2 instances is designed for GPU-accelerated computing, which is suitable to run Isaac Sim. By using EC2 instance, we can avoid buying expensive hardware to run Isaac Sim.
+With Isaac Sim running on an EC2 instance, we can access the simulation environment from anywhere with a web browser (with a remote desktop connection) or via Isaac Sim streaming client. Here, I use [DCV](https://docs.aws.amazon.com/dcv/latest/adminguide/what-is-dcv.html) to connect to the EC2 instance. DCV is a high-performance remote display protocol. It delivers the remote desktop ad application streaming from EC instances to any device with a web browser. 
 
 ## Setup
 ### Launching an Instance for Simualtion
-Login your AWS account and navigate to the EC2 page. Click Launch Instance
+Login your AWS account and navigate to the EC2 page. Click `Launch Instance`.
 
 ![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/EC2_panel.png "EC2 Panel")
 
-Give the instance a proper name, then go on to select the Ubuntu AMI. Click the dropdown  and select the Deep Learning Base OSS Nvidia GPU AMI. This AMI is the Ubuntu instance with Nvidia GPU drivers installed.
+Give the instance a proper name, then go on to select the Ubuntu AMI. Click the dropdown and select the `Deep Learning Base OSS Nvidia GPU AMI`. This AMI is the Ubuntu instance with Nvidia GPU drivers installed.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Instance_name_AMI.png "Instance AMI")
+![Instance AMI](/assets/img/posts/Isaac_sim_EC2/Instance_name_AMI.png "Instance AMI")
 
-Under the instance type, select any instance in the g5 family. Here, I choose the `g5.2xlarge` which is the best option I can choose with my budget.
+Under the instance type, select any instance in the g5 family. Here, I choose the `g5.2xlarge` which is the best option I can choose within my budget limit.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Instance_type.png "Instance Type")
+![Instance Type](/assets/img/posts/Isaac_sim_EC2/Instance_type.png "Instance Type")
 
-For key pair, select the keypair you created before. If you don't have a key pair, click Create key pair and following the instructions on AWS.
+For key pair, select the key pair you created before. If you don't have a key pair, click Create key pair and following the instructions on AWS.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Key_pair.png "Key Pair")
+![Key Pair](/assets/img/posts/Isaac_sim_EC2/Key_pair.png "Key Pair")
 
 For the Network Settings, click Edit. We will need some ports for SSH and remote desktop connections.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Network_settings.png "Network Settings")
+![Network Settings](/assets/img/posts/Isaac_sim_EC2/Network_settings.png "Network Settings")
 
 For the ssh connection, I set the Source type as Anywhere as I don't have a fix IP from my ISP.
 
-For the Remote Desktop Connection, I set the port range as 8443 which is the port used by DVC for the remote desktop connection.
+For the Remote Desktop Connection, I set the port range as 8443 which is the port used by DCV for the remote desktop connection.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Inbound_rules.png "Inbound Rules")
+![Inbound Rules](/assets/img/posts/Isaac_sim_EC2/Inbound_rules.png "Inbound Rules")
 
 Finally,  we need to configure the Storage. The default size is 65GB. But I need more than that, so I set the size to 120GB.
 
-![EC2 Panel](/assets/img/posts/Isaac_sim_EC2/Storage.png "Storage")
+![Storage](/assets/img/posts/Isaac_sim_EC2/Storage.png "Storage")
 
-Now, we are ready to launch! Click Launch instance. Wait for it to launch and ssh into it. 
+Now, we are ready to launch! Click `Launch instance`. Wait for it to launch and ssh into it. 
 
 For this AMI, the Nvidia drivers and docker will be installed automatically. Executing the following command to check if the Nvidia drivers are installed and working properly.
 ```bash
@@ -95,7 +96,7 @@ sudo apt install ./nice-xdcv_2023.1.565-1_amd64.ubuntu2204.deb
 sudo apt install ./nice-dcv-simple-external-authenticator_2023.1.228-1_amd64.ubuntu2204.deb
 ```
 
-3. Auto-start DCV
+3. Configure DCV for auto-session start
 
 ```bash
 sudo sed -i s/"#create-session = true"/"create-session = true"/g /etc/dcv/dcv.conf
@@ -123,15 +124,17 @@ The default `ubuntu` user has no password. To login to the remote desktop, a pas
 sudo passwd ubuntu
 ```
 
-Once complete, you can connect the instance using the DCV client.  Look up the IP address of the EC2 instance. Assuming the IP adress is 123.123.123.123. Use your browser to connect to https://123.123.123.123:8443. Enter `ubuntu` and the password you set. You should be able to login to the remote desktop. 
+Once complete, you can connect the instance using the DCV client.  Look up the IP address of the EC2 instance. Assuming the IP adress is `123.123.123.123`. Use your browser to connect to https://123.123.123.123:8443. Enter `ubuntu` and the password you set. You should be able to login to the remote desktop. 
 
 ### Installing Isaac Sim
 
-Installing Issac Sim is easy with this AMI. Follow the steps from the official documentation [Issac Sim Workstation Installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_workstation.html).
+Installing Issac Sim is easy with this AMI. This instance comes with the Nvidia drivers installed. We can directly start installing Isaac Sim. 
+
+Follow the steps from the official documentation [Issac Sim Workstation Installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_workstation.html).
 
 ```bash
 wget https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage
-sudo chmod +x omniverse-launcher-linux.AppImage
+sudo chmod a+x omniverse-launcher-linux.AppImage
 sudo apt install libfuse  # needed for running omniverse-launcher
 ```
 Double click the `omniverse-launcher-linux.AppImage` file to install the launcher.
@@ -164,13 +167,17 @@ echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## Running the Simulation on AWS EC2
+## Running the simulation on AWS EC2
+1. Start your instance if it's not running.
+2. Find the public ip of your instance.
+3. Open the DCV viewer by using the public ip and port 8443 with your browser.
+4. Login with the ubuntu user and the password you set.
+5. Start the `omniverse-launcher` and login with your Nvidia development account.
+6. Go to `LIBRARY` tab, select `Isaac Sim` and click `Launch`.
 
-## Teardown
+![Isaac Sim App Selector](/assets/img/posts/Isaac_sim_EC2/Omniverse_launcher.png "Isaac Sim App Selector")
 
-## Conclusion
-
-
-## Reference
+## References
+This posts is based on the following resources.
 1. [Simulating Robots in the Cloud with EC2 and O3DE](https://mikelikesrobots.github.io/blog/simulation-in-cloud/)
 2. [Isaac Sim on AWS EC2 - Easy Installation](https://www.youtube.com/watch?v=RVMAyyVGAC4&ab_channel=TheConstruct)
