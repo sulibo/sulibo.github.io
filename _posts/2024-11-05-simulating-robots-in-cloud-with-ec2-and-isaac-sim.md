@@ -135,7 +135,7 @@ Follow the steps from the official documentation [Issac Sim Workstation Installa
 ```bash
 wget https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage
 sudo chmod a+x omniverse-launcher-linux.AppImage
-sudo apt install libfuse  # needed for running omniverse-launcher
+sudo apt install libfuse2  # needed for running omniverse-launcher
 ```
 Double click the `omniverse-launcher-linux.AppImage` file to install the launcher.
 
