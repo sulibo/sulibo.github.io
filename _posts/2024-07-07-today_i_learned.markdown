@@ -34,6 +34,7 @@ Today I Learned: collection of notes, tips, tricks and stuff I learn from day to
 - [Visual Servoing](https://en.wikipedia.org/wiki/Visual_servoing) is a control system that uses feedback from a camera to control the movement of a robot or other object.
     - Reference: [Lecture Notes](https://dellaert.github.io/21S-8803MM/Readings/L7%20Visual%20Servo%20Control.pdf)
     - Software: [ViSP](https://visp.inria.fr) Visual Servoing Plaform by IRIS - Inria.  
+- [Hand-eye calibration](https://campar.in.tum.de/Chair/HandEyeCalibration)
 
 ## ROS 
 - [ROS with Docker](https://github.com/2b-t/docker-for-robotics)
